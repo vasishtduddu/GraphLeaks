@@ -1,0 +1,15 @@
+\section{Related Work}\label{related}
+
+Further, recent works have indicated privacy risks in Graph NNs where an adversary can infer the presence of a link between two nodes using a manual threshold between the distance of two node features~\cite{linksteal}
+This attack however, is subsumed within our more generic attack methodology. We extract the entire adjacency matrix which can be used to infer the presence of links among other wider privacy attacks.
+Text embedding models have been exploited for three major attacks: membership inference, attribute inference and inversion attacks~\cite{textembleak,nlp}
+Here the words and sentences are directly mapped to vectors for inference attacks.
+However, a direct application of these attacks is not possible in case of high dimensional graphs and requires additional consideration to the network structure making the problem more challenging.
+
+inference attack have been deployed in different settings including collaborative learning~\cite{whitebox,collabinf}, generative models~\cite{logan}
+Model extraction attacks~\cite{timing,csinn,stealml}
+
+
+Memorization main cause for privacy leakage of trianing data~\cite{memorize,secretsharer,overlearninginf}
+Differential Privacy is a solution but faces privacy accuracy tradeoff~\cite{diffpriv}
+Adding noise to embeddings to defend against inference attacks~\cite{attriguard}

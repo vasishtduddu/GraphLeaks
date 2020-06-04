@@ -1,0 +1,41 @@
+\section{Experiment Setup}
+
+
+\subsection{Datasets}
+
+For the Reconstruction attack, we consider two standard benchmarking datasets: Citeseer and Cora.
+
+\noindent\textbf{Pubmed.} The Pubmed Diabetes dataset consists of 19717 scientific publications from PubMed database pertaining to diabetes classified into one of three classes. The citation network consists of 44338 links. Each publication in the dataset is described by a TF/IDF weighted word vector from a dictionary which consists of 500 unique words.
+We use 60 train samples, 500 validation samples and 1000 test samples.
+
+
+\noindent\textbf{Cora.} The Cora dataset consists of 2708 scientific publications classified into one of seven classes.
+The citation network consists of 5429 links. Each publication is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
+The dictionary consists of 1433 unique words.
+For training 140 samples are used, 300 validation samples and 1000 test samples.
+
+\noindent\textbf{Citeseer.} The CiteSeer dataset consists of 3312 scientific publications classified into one of six classes.
+The citation network consists of 4732 links. Each publication in the dataset is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
+The dictionary consists of 3703 unique words.
+The number of training samples is 120, 500 validation samples and 1000 test samples.
+
+For the attribute inference attack, we consider two social networking anonymized datasets with masked senstive attributes: Facebook and LastFM\footnote{http://snap.stanford.edu/data/feather-lastfm-social.html}.
+
+
+\noindent\textbf{LastFM.} Nodes 7,624
+Edges 27,806 A social network of LastFM users which was collected from the public API in March 2020. Nodes are LastFM users from Asian countries and edges are mutual follower relationships between them. The vertex features are extracted based on the artists liked by the users. The task related to the graph is multinomial node classification - one has to predict the location of users. This target feature was derived from the country field for each user.
+
+
+
+\subsection{Training Methodology}
+
+
+\subsection{Metrics}
+
+Average Precision:
+
+Precision:
+
+Accuracy:
+
+and others..

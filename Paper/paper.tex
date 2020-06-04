@@ -1,0 +1,58 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage{multirow}
+\usepackage{dblfloatfix}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{backgrounds, positioning, fit}
+\usetikzlibrary{shapes.geometric}
+\usepackage{amsmath}
+\usetikzlibrary{patterns}
+\usetikzlibrary{pgfplots.groupplots}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{wrapfig}
+
+
+\begin{document}
+%\pagestyle{plain}
+
+\title{Privacy Risks in Graph Neural Networks}
+
+
+\author{
+    \IEEEauthorblockN{Vasisht Duddu\IEEEauthorrefmark{1}, Antoine Boutet\IEEEauthorrefmark{1},  Virat Shejwalkar\IEEEauthorrefmark{2}}
+    \IEEEauthorblockA{\IEEEauthorrefmark{1}Univ Lyon, INSA Lyon, Inria, CITI}
+    \IEEEauthorblockA{\IEEEauthorrefmark{2}University of Massachusetts Amherst}
+    \IEEEauthorblockA{vduddu@tutamail.com, antoine.boutet@insa-lyon.fr, vshejwalkar@cs.umass.edu}
+}
+
+
+
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+Privacy Leakage, Inference Attacks, Graph Neural Networks, Graph Embeddings.
+\end{IEEEkeywords}
+
+\input{introduction}
+\input{background}
+\input{attacks}
+\input{setting}
+\input{evaluation}
+\input{related}
+\input{conclusions}
+
+{\footnotesize
+\bibliographystyle{IEEEtranS}
+\bibliography{paper.bib}
+}
+
+
+
+\end{document}
+\endinput

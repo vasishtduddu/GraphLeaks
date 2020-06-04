@@ -1,0 +1,57 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{backgrounds, positioning, fit}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{patterns}
+
+%% put tikzlibrary below if necessary
+
+% set up externalization
+\usetikzlibrary{external}
+\tikzset{external/system call={latex \tikzexternalcheckshellescape -halt-on-error
+-interaction=batchmode -jobname "\image" "\texsource";
+dvips -o "\image".ps "\image".dvi;
+ps2eps "\image.ps"}}
+\tikzexternalize
+
+
+\begin{document}
+
+
+\begin{tikzpicture}
+\begin{axis}[
+ylabel=F1 Score,
+%ylabel style={yshift=-1cm},
+%xlabel=Architectures,
+xtick={0,1,2,3},
+xticklabels={,NN,RF,SVM},
+%xlabel style={yshift=0.35cm},
+legend style={at={(0.5,1.15)},anchor=north,legend columns=-1,font=\normalsize},
+ybar=5pt,% configures ‘bar shift’
+bar width=8pt,
+ylabel near ticks,
+xlabel near ticks,
+x label style={font=\Large},
+y label style={anchor=south,font=\Large},
+ytick style={font=\large},
+xtick style={font=\large},
+xmax=3.5,
+ymax=0.62
+]
+
+\addplot [fill=blue!65] coordinates {(1,0.57) (2,0.57) (3,0.59)};
+\addplot [fill=red!65] coordinates { (1,0.59) (2,0.58) (3,0.61)};
+
+
+\legend{DeepWalk, Node2Vec}
+\end{axis}
+
+
+\end{tikzpicture}
+
+
+
+\end{document}
