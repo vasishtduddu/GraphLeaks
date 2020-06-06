@@ -1,16 +1,28 @@
 \section{Introduction}\label{introduction}
 
-Different graph embedding algorithms to embed both the entire graphs as well as the nodes have been well studied~\cite{node2vec,deepwalk,line,sdme,graph2vec,harp}
+Large scale real-world systems are typically modelled in the form of graphs: online social networks, world wide web, citation networks and biomedical datasets, which represent the entities as nodes and their relationship with edges~\cite{zhou2018graph}.
+Traditional Deep Neural Networks fail to capture the nuances of structured data but a specific class of algorithms, namely, Graph Neural Networks (GNNs) have shown state of the performance on such complex graph data for node classification, link prediction etc.
+Such models requires large data which raises the question of privacy if they are trained with private and potentially sensitive data.
+Consider a graph capturing the outbreak of a disease where the nodes represent the individuals, medical symptoms as the node features and the edges indicating the disease transmission.
+Typically, in such datasets a GNN provides state of the art performance for predicting disease for an arbitrary user in the graph (node classification) and determining the future outbreak (link prediction).
+For such a model, an adversary can infer the health status of a particular user (node in graph) by identifying whether the user was part of the training data or not.
+Further, the adversary can potentially reconstruct the graph from the low dimensional embeddings enabling the adversary to extract the sensitive input to the models.
+Finally, graph embeddings capture important semantics from the input graph while maintaining the contextual information in the form of preferential connection which can be exploited to infer sensitive attributes about an individual.
+These three privacy attacks, namely, node inference, graph reconstruction and attribute inference, are examples of a direct privacy violation of the individual which can further be used without user consent. % for deciding medical insurance premium or job hiring.
+Further, companies spend enormous resources to annotate the training dataset to achieve state of the art performance and such attacks inferring training data also violates the Intellectual Property.
+Hence, studying and mitigating membership inference risk is crucial specifically with the onset of data protection laws such as HIPAA\footnote{https://www.hhs.gov/hipaa/index.html} and GDPR\footnote{https://gdpr.eu/}.
 
-adversarial attacks on graph embeddings have been explored~\cite{nodepoison} but the privacy risks of releasing embedding on the user's sensitive data are not well understood and studied
+In the context of Machine Learning, a privacy violation occurs when an adversary infers something about a \textit{particular} user's data record in the training dataset which cannot be inferred from other models trained on similar data distribution~\cite{7958568,8835245}.
+This information leakage is quantified using the success of inference attacks: membership inference and attribute inference and reconstruction attacks.
+In attribute inference attacks, the attacker infers sensitive features of an individual's data record used in model's training.
+A stronger case of attribute inference is where the attacker reconstructs a portion of the sensitive training data itself, i.e, data reconstruction attack.
+In case of node membership inference, the adversary traces a particular individual's record to the training dataset, i.e., identify whether a given data record was a member of the training data.
+Prior literature in privacy attacks focus on models trained on non-graph data including text, images and speech to study the vulnerability to membership inference~\cite{7958568}, attribute inference~\cite{10.1504/IJSN.2015.071829}, property inference~\cite{10.1145/3243734.3243834}, model inversion~\cite{10.1145/2810103.2813677} attacks as well as model parameter and hyperparameter stealing attacks~\cite{10.5555/3241094.3241142,8418595}.
+However, the privacy risk in Graph-based machine learning models under adversarial setting is not yet explored.
+In this work, we evaluate the vulnerability of graph embedding algorithms along with GNNs against the threat from three privacy attacks: node membership inference,
 
-graph embedding are important~\cite{tutorial}
+\noindent\textbf{Contributions.}
 
-
-Privacy risks in machine learning have been explored using membership inference attacks~\cite{membershipinf}, property inference~\cite{propertyinf} and attribute inference attacks~\cite{attributeinf,attributeinf2,overlearninginf}.
-Further, model extraction attacks aim to reconstruct the target model architecture via side channels~\cite{csinn,timing} and steal the functionality by training the reconstructed architecture on target model predictions as labels~\cite{stealml}.
-
-attack model~\cite{gae,vgae}
-
-connectivity Information in graphs are represented as adjacency matrix which is then used for various applications such as attribute prediction, clustering, link prediction, node classification.
-Some algorithms transform these adjacency matrix (connectivity information) and convert it to a low dimension latent representation which can be used as features.
+\noindent\textbf{Paper Organization.}  We introduce the basic idea behind graph embedding algorithms and GNNs in Section~\ref{background}, followed by a detailed attack taxonomy and threat models for the three proposed privacy attacks: Node Membership Inference, Graph Reconstruction and Node Attribute Inference attacks in Section~\ref{attack}.
+We describe the experimental setup with the baselines and dataset descriptions in Section~\ref{setup}.
+Finally, the evaluations of the proposed attacks under different threat models and settings are given in Section~\ref{evaluation}.

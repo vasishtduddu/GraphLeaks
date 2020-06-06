@@ -1,5 +1,6 @@
 \documentclass[conference]{IEEEtran}
 
+
 \usepackage{multirow}
 \usepackage{dblfloatfix}
 \usepackage{tikz}
@@ -17,7 +18,7 @@
 \begin{document}
 %\pagestyle{plain}
 
-\title{Privacy Risks in Graph Neural Networks}
+\title{Privacy Risks in Graph Embedding Algorithms}
 
 
 \author{
@@ -33,6 +34,16 @@
 \maketitle
 
 \begin{abstract}
+Graphs are ubiquitous to model the relationship between nodes representing any type of data.
+Consequently, graph embedding algorithms have been proposed to map graph data to low dimensional space for downstream processing such as node classification and link prediction.
+With the increasing collection and processing of personal data, the graph embeddings can be trained on potentially private and sensitive data.
+In this work, we study and quantify the privacy leakage in graph embeddings against different inference attacks specific to Graph based deep learning models.
+Given a blackbox Graph Neural Network for node classification, we propose node inference attack to infer whether a graph node corresponding to individual user's data was member of the model's training or not using the output prediction scores with an adversary advantage of 21\% to 56\% beyond random guess.
+We extend the node inference attack to an unsupervised setting where adversary has access to the released node embeddings which leaks information with an adversary advantage of ~9\% and 72\%.
+These attacks exploit the fact graph embedding algorithms leave a distinguishable footprint between train and test data records.
+We then propose Graph Reconstruction attack, where the adversary aims to reconstruct the target graph given the graph embeddings for the nodes.
+We use the graph reconstruction for link inference, where the adversary can infer the presence of an edge between two nodes in a graph.
+Finally, we show that the graph embeddings algorithms: Node2Vec and DeepWalk, are strongly correlated to sensitive attributes of the nodes due to the network structure where the adversary can infer gender and location from the released graph embeddings.
 \end{abstract}
 
 \begin{IEEEkeywords}

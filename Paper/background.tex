@@ -1,6 +1,67 @@
 \section{Background}\label{background}
 
-\subsection{Graph Neural Networks}
-
 
 \subsection{Graph Embedding}
+
+
+Different graph embedding algorithms to embed both the entire graphs as well as the nodes have been well studied~\cite{node2vec,deepwalk,line,sdme,graph2vec,harp}
+
+adversarial attacks on graph embeddings have been explored~\cite{nodepoison} but the privacy risks of releasing embedding on the user's sensitive data are not well understood and studied
+
+graph embedding are important~\cite{tutorial}
+
+
+Privacy risks in machine learning have been explored using membership inference attacks~\cite{membershipinf}, property inference~\cite{propertyinf} and attribute inference attacks~\cite{attributeinf,attributeinf2,overlearninginf}.
+Further, model extraction attacks aim to reconstruct the target model architecture via side channels~\cite{csinn,timing} and steal the functionality by training the reconstructed architecture on target model predictions as labels~\cite{stealml}.
+
+attack model~\cite{gae,vgae}
+
+connectivity Information in graphs are represented as adjacency matrix which is then used for various applications such as attribute prediction, clustering, link prediction, node classification.
+Some algorithms transform these adjacency matrix (connectivity information) and convert it to a low dimension latent representation which can be used as features.
+
+
+
+
+\subsection{Graph Neural Networks}
+
+A large number of real-world applications require processing graph data which contains rich relational information between different entities (e.g., online social media, disease outbreaks, recommendation engines, knowledge graphs and navigation systems).
+%Machine Learning provides solutions to extract knowledge from such data, but transforming the data and models is not trivial \cite{zhou2018graph}.
+Deep Learning and more precisely Convolutional Neural Networks have shown tremendous performance over non-graph data such as images by capturing the spatial relation between pixels of image and extracting features over multiple layers.
+However, this machine learning scheme has shown its limits for graph data and the learning on such data is still challenging~\cite{zhou2018graph}.
+Indeed, the models have to capture the connections in the data while ensuring invariance of graph data representation, even without fixed ordering between the nodes (i.e., the adjacency matrix representing the connections between nodes varies but still results in the same graph). %different
+
+To overcome this limitation, Graph Neural Networks (GNNs) have been introduced.
+GNNs transform models operating on low dimensional euclidean datasets (i.e., such as images) to graph data by mapping these graph data into a low dimensional feature embedding space.
+Specifically, the parameters of the embedding function are updated to improve the feature representation of the graph nodes while maintaining the original properties.
+
+%\noindent\textbf{Training GNNs.}
+Consider a graph $G=(V,E)$ where $V$ represents the vertex set consisting of nodes \{$v_1,...,v_n$\} where the connections between the edges $E$ is represented as a symmetric, sparse adjacency matrix $A$ $\in$ $R_{nxn}$ where $a_{ij}$ denotes the edge weight between nodes with $a_{ij}= 0$ for missing edges.
+The graph data is pre-processed to obtain features for each node and node connections as matrices to get the training data $D_{train}$.
+The training of GNNs relies on message passing algorithm which is the weighted aggregation of features of neighbouring nodes $\mathcal{N}(v)$ to compute the feature of a particular node $v$.
+The loss over the resultant classification for the node $v$ is then backpropagated to update the model weights for aggregation.
+Given the features $x$ of a single node, the GNN produces an output label $f(x;W)$ which captures the probability of the input node with features $x$ belonging to a particular class.
+
+Consider a $N\times D_F$ feature matrix $X$ where N is the number of nodes, $D_F$ is the number of node features and an adjacency matrix $A$ which captures the representation of graph structure in matrix form.
+The output of a layer with $F$ features takes the feature matrix along with the adjacency matrix as input to produce a $N\times F$ matrix as an output.
+\begin{equation}
+H^{(l+1)} = f(H^{(l)}, A)
+\end{equation}
+with $H(0)=X$ and $H(L)=Z$, $L$ being the number of layers and $H$ is the intermediate activation.
+The parameterized embedding function $f$ learns to map the node features to a lower dimensional embedding space.
+In this work, we evaluate the privacy leakage on four state of the art GNNs which have different embedding functions $f$:
+%In this work, we evaluate the privacy leakage on four state of the art GNNs: Graph Convolutional Networks (GCN), GraphSAGE, Graph Attention Networks (GAT) and Topology Adaptive Graph Convolutional Networks (TAGCN), which have different embedding functions $f$.
+
+Graph Convolutional Network (GCN) \cite{Kipf2016tc}. In the simple model of GNNs mentioned above, we aggregate the features of neighbouring nodes but not the node itself.
+In order to compensate this, GCN adds the identity matrix $I$ to the original adjacency matrix $\hat{A} = A + I$.
+Further, the adjacency matrix is not normalized and the multiplication on $A$ will change the scale of the node features.
+GCN addresses this by normalizing $A$ as $D^{-1}A$ where $D$ is the diagonal node degree matrix and results in averaging of neighbouring node features.
+An additional trick is to use a symmetric normalization as $D^{-\frac{1}{2}}\hat{A}D^{-\frac{1}{2}}$. This results in the following propagation rule for GCN:
+
+\begin{equation}
+f(H^{(l)}, A) = \sigma\left( \hat{D}^{-\frac{1}{2}}\hat{A}\hat{D}^{-\frac{1}{2}}H^{(l)}W^{(l)}\right)
+\end{equation}
+with $\hat{D}$ being the diagonal node degree matrix of $\hat{A}$.
+
+GraphSAGE \cite{NIPS20176703}.
+Graph Attention Networks (GAT) \cite{velickovic2018graph}.
+Topology Adaptive GCN (TAGCN) \cite{du2018topology}.
