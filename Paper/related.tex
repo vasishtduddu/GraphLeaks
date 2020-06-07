@@ -1,5 +1,22 @@
 \section{Related Work}\label{related}
 
+
+Inference attacks that violate data privacy have been explored in the context of traditional machine learning models.
+Membership Inference attacks can be deployed in both whitebox~\cite{8835245} and blackbox~\cite{7958568} setting in traditional machine learning algorithms and model memorization (whitebox) and overfitting (blackbox) are considered as the privacy cause for leakage.
+These attacks are further extended to collaborative learning~\cite{8835245,DBLP:conf/sp/MelisSCS19} and generative models~\cite{logan}.
+On the other hand, reconstruction attacks infer private attributes of the inputs passed to the models~\cite{247690,DBLP:journals/corr/abs-1907-00164,10.1145/3243734.3243834,10.1504/IJSN.2015.071829,10.1145/2810103.2813677}.
+Other privacy attacks aim to extract hyperparameters~\cite{8418595}, reverse engineer the model architecture and parameters using side channels~\cite{236204} or the output predictions~\cite{10.5555/3241094.3241142}.
+Memorization of data by Neural Networks has been attributed as a major cause for privacy leakage~\cite{memorize,secretsharer,overlearninginf}.
+However, none of the previous works address the privacy leakage of training data in GNNs which remains unexplored and not well-understood.
+
+To mitigate Membership attacks, Memguard~\cite{10.1145/3319535.3363201} and AttriGuard~\cite{217523} add carefully crafted noise to the final output prediction to misclassify the shadow model attacks.
+Adversarial regularization using minimax optimization regularizes the model to mitigate inference attacks~\cite{10.1145/3243734.3243855}.
+Regularization through ensemble training, dropout and L2-regularization have been studied~\cite{ndss19salem}.
+Differential Privacy mitigates such privacy attacks with theoretical guarantees by adding noise to gradients~\cite{10.1145/2976749.2978318} or adopting teacher-student framework~\cite{45828}.
+In case of GNNs, overfitting is not the primary reason for data leakage and hence, simple regularization does not suffice.
+
+
+
 Further, recent works have indicated privacy risks in Graph NNs where an adversary can infer the presence of a link between two nodes using a manual threshold between the distance of two node features~\cite{linksteal}
 This attack however, is subsumed within our more generic attack methodology. We extract the entire adjacency matrix which can be used to infer the presence of links among other wider privacy attacks.
 Text embedding models have been exploited for three major attacks: membership inference, attribute inference and inversion attacks~\cite{textembleak,nlp}
@@ -10,6 +27,6 @@ inference attack have been deployed in different settings including collaborativ
 Model extraction attacks~\cite{timing,csinn,stealml}
 
 
-Memorization main cause for privacy leakage of trianing data~\cite{memorize,secretsharer,overlearninginf}
+Memorization main cause for privacy leakage of trianing data~\cite{}
 Differential Privacy is a solution but faces privacy accuracy tradeoff~\cite{diffpriv}
 Adding noise to embeddings to defend against inference attacks~\cite{attriguard}

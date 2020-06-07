@@ -1,1 +1,10 @@
 \section{Conclusions}\label{conclusions}
+
+
+The privacy risks of graph embedding algorithms trained on sensitive graph data is not explored and fully-understood.
+To this extent, this work provides the first comprehensive privacy risk analysis of publicly released graph embeddings on three major classes of privacy attacks: node membership inference, graph reconstruction and attribute inference attacks.
+We propose node membership inference where the adversary aims to infer whether a given user's node was used in the training graph dataset or not.
+Next, we show that publicly released embeddings can be inverted to obtain the input graph data enabling an adversary to perform graph reconstruction attack on the sensitive graph data.
+This further enables the adversary to perform link inference attack where adversary with a high accuracy can identify whether a link exists between two nodes in the network.
+Finally, we show that an adversary can infer sensitive hidden attributes of users such as gender and location from the graph embeddings.
+In this work, we successfully perform the above attacks under practical adversary assumptions and threat models to indicate the privacy leakage from graph embeddings.

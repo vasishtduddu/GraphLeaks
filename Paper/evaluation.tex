@@ -78,9 +78,9 @@ Moreover, the feature embedding for the initial layers are useful since for late
 \subsection{Graph Reconstruction Attack}
 
 The success of graph reconstruction is evaluated on the unseen target graph while the model is trained on the train graph.
-The test ROC-AUC score for Cora dataset is 0.65 while the average precision is 0.722 while for Citeseer dataset the ROC-AUC score is 0.65 and 0.778 average precision.
+The test AUC score for Cora dataset is 0.65 while the average precision is 0.722 while for Citeseer dataset the AUC score is 0.65 and 0.778 average precision.
 In case of Pubmed dataset, .....
-The curve for variation of ROC-mAUC score and the average precision for the three datasets on the validation sub graph is given in Figure~\ref{fig:valgraphrecon}.
+The curve for variation of AUC score and the average precision for the three datasets on the validation sub graph is given in Figure~\ref{fig:valgraphrecon}.
 
 \begin{figure}[!htb]
     \centering
@@ -92,13 +92,13 @@ The curve for variation of ROC-mAUC score and the average precision for the thre
     \includegraphics[width=0.5\linewidth]{figures/Reconstruction/ap.pdf}
     }
     \end{minipage}
-    \caption{Training curves for ROC-AUC score and Average Precision on the validation graph.}
+    \caption{Training curves for AUC score and Average Precision on the validation graph.}
     \label{fig:valgraphrecon}
 \end{figure}
 
 \textbf{Impact of Adversary Knowledge.} On increasing the adversary's knowledge to 50% of the target graph, we observe an increase the attack performance.
-Specifically, the ROC-AUC score for Cora increases to 0.76 from 0.65 while the average precision increases to 0.81 from 0.722.
-In Citeseer dataset, the AUC-ROC score increases to 0.779 from 0.65 while the average precision increases to 0.828 from 0.778.
+Specifically, the AUC score for Cora increases to 0.76 from 0.65 while the average precision increases to 0.81 from 0.722.
+In Citeseer dataset, the AUC score increases to 0.779 from 0.65 while the average precision increases to 0.828 from 0.778.
 Finally, for Pubmed dataset...
 
 
@@ -145,7 +145,7 @@ The inference attack performance is given by the F1 score as shown in Figure~\re
 For Facebook, the graph embedding using DeepWalk resulted in an F1 score of 0.57 for NN, 0.58 for RF and 0.59 for SVM classifier.
 On the other hand, Facebook's Node2Vec embedding showed an F1 score of 0.59, 0.57 and 0.61 respectively for NN, Rf and SVM attack classifier.
 In case of LastFM, we found the attack F1 scores for Node2Vec for higher than DeepWalk embeddings.
-The F1 score for Node2Vec 0.61, 0.62 and 0.65 corresponding to NN, RF and SVM attack classifier while the F1 score using Node2Vec embeddings are 0.80, 0.83 and 0.83 for NN, RF and SVM.
+The F1 score for DeepWalk 0.61, 0.62 and 0.65 corresponding to NN, RF and SVM attack classifier while the F1 score using Node2Vec embeddings are 0.80, 0.83 and 0.83 for NN, RF and SVM.
 
 \textbf{Impact of Adversary's Knowledge.} The performance of the attack model for Facebook dataset did not increase by much.
 On increasing the knowledge of the adversary's auxiliary dataset from 30\% to 50\%, the confidence of attack on LastFM dataset increases.
