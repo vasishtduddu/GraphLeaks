@@ -3,7 +3,7 @@
 In this section, we evaluate the privacy leakage from different attacks.
 The code for all the experiments is made publicly available for easy reproducibility\footnote{Anonymized for Submission}.
 
-\subsection{Node Inference Attack from Output Predictions}
+\subsection{Node Inference Attack from Output Predictions (Blackbox)}
 
 
 The overfitting for GraphSage architecture trained on the three datasets is given in Figure~\ref{fig:NIA}(a).
@@ -36,7 +36,7 @@ Interestingly, the generalization error increases (train accuracy remains the sa
 For large number of layers ($>$ 8 layers) in the GNN, for all the datasets and architectures, the model completely loses it's predictive power.
 In general, the inference accuracy as well as prediction accuracy decreases with increasing the range of the message passing algorithm by increasing the layers from 2 to 16.
 This implies that the membership privacy leakage is influenced by the structured graph data with preferential connections between different nodes.
-Specifically, aggregating features from larger number of nodes results in higher averaging which reduces the distinguishability (over-smoothening of features) as model converges to random walk’s limit distribution~\cite{klicpera2018combining,Li2018DeeperII} which is crucial for inference attacks~\cite{7958568,ndss19salem}.
+Specifically, aggregating features from larger number of nodes results in higher averaging which reduces the distinguishability (over-smoothening of features) as model converges to random walk’s limit distribution~\cite{klicpera2018combining,Li2018DeeperII} which is crucial for inference attacks~\cite{membershipinf,ndss19salem}.
 
 
 \begin{figure}[!htb]
@@ -50,22 +50,22 @@ Specifically, aggregating features from larger number of nodes results in higher
 
 
 
-\subsection{Node Inference Attack from Graph Embedding}
+\subsection{Node Inference Attack from Graph Embeddings (Whitebox)}
 
-We exploit the difference in intermediate feature representation of train and test data to perform membership inference attack in a whitebox setting (Table~\ref{whitebox}).
+We exploit the difference in intermediate feature representation of train and test data to perform membership inference attack in a whitebox setting.
 Results show that different models trained on PubMed dataset leak significantly more information between 20\% and 36\% over random guess accuracy.
 On the other hand, models trained on Citeseer dataset provide to the adversary an advantage between ~7\% and ~17\% over random guess while for Cora dataset it is between 4\% and 7\%.
-The embedding is significantly different for train and test data points for PubMed dataset as seen Figure~\ref{embedding}(a) which result in a higher whitebox membership inference accuracy compared to Cora and Citeseer dataset (Figure~\ref{embedding}(b) and (c)).
+The embedding is significantly different for train and test data points for PubMed dataset as seen Figure~\ref{fig:whitebox} which result in a higher whitebox membership inference accuracy compared to Cora and Citeseer dataset.
 The higher accuracy for Pubmed dataset can be attributed to significant distinguishability of features as seen by visually inspecting in Figure~\ref{embedding}.
 
+\begin{wrapfigure}{l}{0.5\linewidth}
+  \begin{center}
+    \includegraphics[width=\linewidth]{figures/EmbeddingMIA/whiteboxMIA.pdf}
+  \end{center}
+  \caption{Adversary advantage for node membership inference from Graph Embeddings.}
+  \label{fig:whitebox}
+\end{wrapfigure}
 
-
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.3\textwidth,height=5cm]{figures/EmbeddingMIA/whiteboxMIA.pdf}
-\caption{Adversary advantage for node membership inference from Graph Embeddings.}
-\label{fig:numlayers}
-\end{figure}
 
 
 The success of the unsupervised whitebox attack is attributed to the message passing which updates the parameters (weights) to specifically ensure higher distinguishability between the data points of different classes for high accuracy on training dataset.
