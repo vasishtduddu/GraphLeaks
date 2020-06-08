@@ -67,6 +67,7 @@ Hence, blackbox inference attacks are aimed at exploiting the overfitting aspect
 \noindent\textbf{Attack Methodology.} Based on the adversary's auxiliary knowledge about $G_{train}$ distribution, we categorize the attacks into: (a) shadow model attack with auxiliary knowledge of $G_{train}$'s distribution, and (b) confidence score attack with no prior knowledge.
 
 \noindent\subsubsection{Adversary with Auxiliary Knowledge (Shadow Attack).} The adversary is assumed to have an auxiliary graph dataset $G_{aux}$ sampled from the same underlying data distribution as $G_{train}$.
+This is a practical assumption where social networks have publicly available API enabling the adversary to obtain subgraphs of the original social network graph.
 Further, in this particular work, we assume that the adversary has knowledge about the target GNN architecture which is consistent with prior attack settings~\cite{membershipinf,attributeinf,attributeinf2,logan} but the attack is transferable across different models~\cite{ndss19salem}.
 To conduct its attack, the adversary uses her prior knowledge to map the target model's predictions to membership values and hence the attack is supervised.
 For a target model $f()$, the adversary trains a substitute model $f_{local}$ on auxiliary graph data ($G_{aux}$) drawn from the same distribution as $G_{train}$.
@@ -108,7 +109,7 @@ For instance, if the application requires to obtain a higher precision, the thre
 \noindent\textbf{\underline{Inference using Graph Embedding (Whitebox)}}
 
 \noindent The adversary in a whitebox setting has access to the model output predictions $f(x; W)$ for an input $x$ as well as the model parameters $W$.
-This allows the adversary to compute the intermediate computations after each layer.
+This allows the adversary to compute the intermediate computations after each layer which in our case corresponds to the embedding for each node as an output of graph convolutional layer.
 This is a strong adversary assumption but practical in cases such as federated learning where the intermediate computations and parameters can be observed~\cite{whitebox,collabinf}.
 
 \noindent\textbf{Attack Motivation.} As explained Section~\ref{background}, GNNs compute the low dimensional feature embedding for the input graph data.
@@ -137,7 +138,6 @@ This novel whitebox attack exploits the difference in embedding representation b
 Given a sensitive target graph data ($G_{target}$) and the corresponding set of publicly released embeddings, $\Psi (v)$ $\forall v \in G_{target}$, the goal of the adversary in this setting is to reconstruct $G_{target}$ and the corresponding connections between the different nodes $A_{target}$.
 Here, the goal of the adversary is to reconstruct the adjacency matrix $A_{target}$ of the graph which is binary with $A_{ij}=1$ if there exists an edge between the node $i$ and $j$ and zero otherwise.
 While node membership inference is a subtle privacy violation of user's data, this is a stronger attack where the entire sensitive graph data is reconstructed by the adversary.
-
 
 \noindent\textbf{Attack Motivation.} Graph embeddings are specially computed to ensure that the underlying graph properties do not change.
 In other words, the embeddings capture the rich semantic and structural information about the graph, for instance, by preserving proximity to the neighbouring nodes.
@@ -169,7 +169,7 @@ The adversary performs graph reconstruction in two phases (Figure~\ref{fig:recat
 In Phase I, the adversary train an graph encoder-decoder attack model on $G_{aux}$.
 The graph encoder $f_{enc}$ maps the adjacency matrix of $G_{aux}$ to corresponding node embeddings $\Psi (v)\rightarrow f_{enc}(v)$ $\forall$ $v \in V$ represented as adjacency matrix.
 The decoder $f_{dec}$ reconstructs the adjacency matrix $A_{rec} = f_{dec}(\Psi (v))$ while both the models are trained using backpropagation to minimize reconstruction loss: $||A - A_{rec}||_2^2$.
-For the attack model, we specifically consider autoencoder architecture with graph convolution as encoder and a decoder which computes the dot product between the embedding vector $\Psi (v)$ and it's transpose $\Psi^T (v)$~\cite{gae}.
+For the attack model, we consider an architecture with graph convolution as encoder and a decoder which computes the dot product between the embedding vector $\Psi (v)$ and it's transpose $\Psi^T (v)$~\cite{gae}.
 The attack models are trained inductively on $G_{aux}$ and the tested on the target embeddings corresponding to target graph $G_{target}$ to reconstruct the training data.
 Given the target released embeddings, the adversary then uses the trained decoder attack model to map the released embeddings to the target adjacency matrix $A_{target}^{rec} = f_{dec}(\Psi (v'))$ $\forall$ $v'\in G_{target}$.
 
@@ -185,17 +185,15 @@ The success of link inference attack closely depends on the success of reconstru
 
 \subsection{Attribute Inference Attack}
 
-Given an embedding of the graph node $\Psi$
+While the precious attack focussed on sensitive graph data and inference attacks exploiting connections between different nodes, attribute inference attacks exploits user node's sensitive features.
+Particularly, given the pair embedding of the subgraph nodes and corresponding sensitive attribute ($\Psi (v), s_{v})$ $\forall v \in G_{aux}$, the adversary aims to infer the sensitive attributes $s^*$ corresponding to the publicly release target embeddings $\Psi (v')$ $\forall v' \in G_{target}$.
+This is a practical assumption as a small fraction of users indeed make their information publicly available on their profile while other users prefer to keep such information private such as gender and location.
 
-\noindent\textbf{Attack Motivation.}
+\noindent\textbf{Attack Motivation.} Nodes in graph for most practical real world applications follow preferential connections, i.e, node similar to each other are connected to each other.
+This is particularly the case in case of social networks where users with similar likes and preferences, represented as features for nodes in the graph, are connected~\cite{socialinfer,socialinfer2}.
+This feature similarity and preferential connections in graphs are captured by graph embeddings to preserve the graph properties.
+Hence, the embeddings are strongly correlated with the node features which can be exploited to infer sensitive attributes.
 
-\noindent\textbf{Attack Methodology.}
-
-
-\subsection{Practicality of Adversary Assumptions}
-
-In all the proposed attacks, we considered practical adversary settings.
-For instance, the assumption of auxiliary subgraph as prior knowledge by the adversary is practical for real world social networking datasets.
-These social networks enable developers to create a graph of users using the publicly available API enabling the adversary to obtain subgraphs of the original social network graph.
-In attribute inference attack,  we assume that the adversary knows a set of sensitive attributes about the users.
-This is practical as a small fraction of users indeed make their information publicly available while other users prefer to keep such information private.
+\noindent\textbf{Attack Methodology.} The adversary has access to the node embeddings and corresponding node's sensitive attributes ($\Psi (v), s_{v})$ $\forall v \in G_{aux}$ from the auxiliary subgraph known to the adversary.
+The adversary uses this prior knowledge to train a supervised attack classifier $f_{attack}$ which maps the embedding to sensitive attributes, i.e, $f_{attack}: \Psi (v) \rightarrow s_{v}$.
+Using this trained attack model, the adversary infers the sensitive attribute $s^*$ corresponding to the target embeddings $f_{attack}(\Psi(v'))$ where $v' \in G_{target}$.

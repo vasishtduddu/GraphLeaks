@@ -31,29 +31,37 @@ Each user has attributes such as the music and artists they likes, location etc.
 
 \subsection{Baselines}
 
-For the inference based on output predictions, we consider the \textbf{GraphSAGE} algorithm as the target GNN model since it can be trained inductively scaling to large datasets.
-While the embedding of graph data in GCN relies on matrix factorization, GraphSAGE uses node features to learn the embedding function.
-GraphSAGE, at each iteration, aggregates node features from local neighbours across different search depths to incrementally gain more information from farther nodes in the graph.
-The increase in number of layers results in feature aggregation from nodes in different depths.
+\noindent For the purpose of our experiments, we consider two classes of embedding algorithms: GNNs and random walk based.
+In this work, we consider the following GNN based embedding techniques:
 
-For the inference based on intermediate graph embeddings, we
+\noindent\textbf{Graph Convolutional Network (GCN)~\cite{Kipf2016tc}.} GCN computed the target node features from neighbouring nodes using matrix factorization, by normalizing adjacency matrix $A$ as $D^{-1}A$ where $D$ is the diagonal node degree matrix and results in averaging of neighbouring node features.
+An additional trick is to use a symmetric normalization as $D^{-\frac{1}{2}}\hat{A}D^{-\frac{1}{2}}$.
 
+\noindent\textbf{GraphSAGE~\cite{NIPS20176703}.} GraphSAGE extends the operations in GCN to a more generic functions for transformation and aggregating of node features.
+While the embedding of graph data in GCN relies on matrix factorization, GraphSAGE uses node feature aggregation using mean, LSTM and pooling to learn the embedding function.
 
-In case of attributer inference attacks, we consider two state of the art unsupervised graph embedding algorithms, namely, Node2Vec and DeepWalk.
+\noindent\textbf{Graph Attention Networks (GAT)~\cite{velickovic2018graph}.} There are weights associated to featured during aggregation which are explicitly defined and learnt during training.
+GAT implicitly define the weights using self-attention mechanism over the node features.
 
-\noindent\textbf{Node2Vec.}
+\noindent\textbf{Topology Adaptive GCN (TAGCN)~\cite{du2018topology}.} Instead of using the spectral convolutions for learning non-linear graph data, TAGCN propose to use general K-localized filter convolution in the vertex domain.
+It replaces the fixed square filters in traditional spectral GCNs for the grid-structured input data volumes.
 
-\noindent\textbf{DeepWalk.}
+\noindent For whitebox node inference, we consider the embeddings from all the above four architectures while for blackbox setting we consider GraphSAGE algorithm.
+In case of graph reconstruction attacks, we consider the generic GCN model as the encoder for the attack model.
+In case of attributer inference attacks, we consider two state of the art unsupervised graph embedding algorithms, namely, Node2Vec~\cite{node2vec} and DeepWalk~\cite{deepwalk}.
 
+\noindent\textbf{DeepWalk~\cite{deepwalk}.} The algorithm creates a transition matrix from the graph and samples random walks from the matrix.
+The nodes are viewed as words and the random walks are viewed as sentences and the resulting sequences are passed to Word2Vec and SkipGram~\cite{wordemb} to obtain node embeddings.
 
-
+\noindent\textbf{Node2Vec~\cite{node2vec}.} This is an extension of DeepWalk which combines Breadth First and Depth First search explorations on the graph to create biased random walks.
+The embeddings are computed using Word2Vec algorithm as mentioned above.
 
 
 
 
 \subsection{Metrics}
 
-The performance of inference attacks, namely, node membership inference and link inference attacks, the inference accuracy is used to estimate the attack success.
+\noindent The performance of inference attacks, namely, node membership inference and link inference attacks, the inference accuracy is used to estimate the attack success.
 
 \noindent\textbf{Inference Accuracy.} Both the inference attacks are a binary classification problem: node is part of the training data or not (membership inference) and there exists a link between any two nodes or not (Link Inference).
 Hence, the accuracy of random guess is 50\% and any higher accuracy indicates a privacy leakage about the model's sensitive training data.
@@ -61,13 +69,13 @@ Hence, the accuracy of random guess is 50\% and any higher accuracy indicates a 
 \noindent\textbf{Adversary Advantage.} In order to compute the additional benefit the adversary gets in terms of performing the attack over random guess, we use the adversary advantage as a metric computed as: $I_{adv} = 2*(I_{acc}-0.5)$.
 This gives an estimate of the information leakage from the model over and above a completely privacy preserving model (random guess).
 
-For evaluating the performance of graph reconstruction attacks, we use two main metrics: precision and roc score.
+\noindent For evaluating the performance of graph reconstruction attacks, we use two main metrics: precision and roc score.
 
 \noindent\textbf{Precision.} The ratio of true positives to the sum of true and false positives is given by precision and estimates the percentage of the predicted samples are actually in the target graph data.
 
 \noindent\textbf{ROC-AUC Score.} The ROC curve plots the true positive rate on the y-axis and the false positive rate on the x-axis. The AUC score computes the area under the ROC curve to get how good the model distinguishes between different classes.
 For a binary classification problem of graph reconstruction to obtain the binary adjacency matrix, the random guess accuracy is 50\% and any higher accuracy indicates the adversary's advantage in reconstructing the target graph data.
 
-In case of attribute inference attack, we evaluate using the F1 score to balance both the recall and precision.
+\noindent In case of attribute inference attack, we evaluate using the F1 score to balance both the recall and precision.
 
 \noindent\textbf{F1-Score.} This metric computes the harmonic mean between the precision and recall which estimates the percentage of samples in the target graph which are predicted as such.
