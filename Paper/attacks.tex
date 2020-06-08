@@ -156,7 +156,7 @@ This novel whitebox attack exploits the difference in embedding representation b
 
 Adversary Goal
 
-
+attack model~\cite{gae,vgae}
 Attack Methodology
 
 \textbf{Link Inference Attack}
@@ -174,3 +174,12 @@ Given an embedding of the graph node $\Psi$
 Adversary Goal
 
 Attack Methodology
+
+
+\subsection{Practicality of Adversary Assumptions}
+
+In all the proposed attacks, we considered practical adversary settings.
+For instance, the assumption of auxiliary sub-graph as prior knowledge by the adversary is practical for real world social networking datasets.
+These social networks enable developers to create a graph of users using the publicly available API enabling the adversary to obtain subgraphs of the original social network graph.
+In attribute inference attack,  we assume that the adversary knows a set of sensitive attributes about the users.
+This is practical as a small fraction of users indeed make their information publicly available while other users prefer to keep such information private.

@@ -79,7 +79,7 @@ Moreover, the feature embedding for the initial layers are useful since for late
 
 The success of graph reconstruction is evaluated on the unseen target graph while the model is trained on the train graph.
 The test AUC score for Cora dataset is 0.65 while the average precision is 0.722 while for Citeseer dataset the AUC score is 0.65 and 0.778 average precision.
-In case of Pubmed dataset, .....
+In case of Pubmed dataset, we get an average precision of 0.95 on the test set with an ROC of 0.94 in reconstructing the target test graph.
 The curve for variation of AUC score and the average precision for the three datasets on the validation sub graph is given in Figure~\ref{fig:valgraphrecon}.
 
 \begin{figure}[!htb]
@@ -96,14 +96,16 @@ The curve for variation of AUC score and the average precision for the three dat
     \label{fig:valgraphrecon}
 \end{figure}
 
-\textbf{Impact of Adversary Knowledge.} On increasing the adversary's knowledge to 50% of the target graph, we observe an increase the attack performance.
+\noindent\textbf{Impact of Adversary Knowledge.} On increasing the adversary's knowledge to 50% of the target graph, we observe an increase the attack performance.
 Specifically, the AUC score for Cora increases to 0.76 from 0.65 while the average precision increases to 0.81 from 0.722.
 In Citeseer dataset, the AUC score increases to 0.779 from 0.65 while the average precision increases to 0.828 from 0.778.
-Finally, for Pubmed dataset...
+Finally, for Pubmed dataset showed an increase to 0.95 from 0.94 AUC score and 0.96 from 0.95 average precision.
 
 
 
-\textbf{Link Inference Attack.} A direct implication of graph reconstruction attack is inferring whether there exists a link between two nodes in the network.
+\subsection{Link Inference Attack}
+
+A direct implication of graph reconstruction attack is inferring whether there exists a link between two nodes in the network by querying the reconstructed adjacency matrix.
 This is a binary classification problem.
 
 \begin{wrapfigure}{l}{0.5\linewidth}
@@ -113,9 +115,9 @@ This is a binary classification problem.
   \caption{Link Inference Accuracy Curve over different epochs}
 \end{wrapfigure}
 
-For Citeseer dataset, the accuracy of of inference is around 93.39\% while for Cora dataset the inference accuracy is 90.73\%.
-The above results are assuming a practical adversary setting with 1585 training data points (30\%) compared to 3166 test data points (60\%) and 527 validation data points (10\%) for Cora dataset.
-The same train-test-validation distribution is used for Citeseer dataset with 1366 (30\%) train records, 2731 (60\%) test records and 455 (10\%) validation records.
+For Citeseer dataset, the accuracy of of inference is around 93.39\% while for Cora dataset the inference accuracy is 90.73\% and 57.28\% for Pubmed dataset.
+This indicates an adversary advantage of 86.78\% (Citeseer), 81.06\% (Cora) and 14.56\% (Pubmed).
+The same train-test-validation distribution is used for the three datasets with 30\% train records and 60\% test records and remaining 10\% as validation records.
 
 
 
