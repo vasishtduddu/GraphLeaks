@@ -18,15 +18,15 @@
 \begin{document}
 %\pagestyle{plain}
 
-\title{Privacy Risks in Graph Embedding Algorithms}
+\title{Privacy Leakage in Graph Embedding}
 
 
-\author{
-    \IEEEauthorblockN{Vasisht Duddu\IEEEauthorrefmark{1}, Antoine Boutet\IEEEauthorrefmark{1},  Virat Shejwalkar\IEEEauthorrefmark{2}}
-    \IEEEauthorblockA{\IEEEauthorrefmark{1}Univ Lyon, INSA Lyon, Inria, CITI}
-    \IEEEauthorblockA{\IEEEauthorrefmark{2}University of Massachusetts Amherst}
-    \IEEEauthorblockA{vduddu@tutamail.com, antoine.boutet@insa-lyon.fr, vshejwalkar@cs.umass.edu}
-}
+%\author{
+%    \IEEEauthorblockN{Vasisht Duddu\IEEEauthorrefmark{1}, Antoine Boutet\IEEEauthorrefmark{1},  Virat Shejwalkar\IEEEauthorrefmark{2}}
+%    \IEEEauthorblockA{\IEEEauthorrefmark{1}Univ Lyon, INSA Lyon, Inria, CITI}
+%    \IEEEauthorblockA{\IEEEauthorrefmark{2}University of Massachusetts Amherst}
+%    \IEEEauthorblockA{vduddu@tutamail.com, antoine.boutet@insa-lyon.fr, vshejwalkar@cs.umass.edu}
+%}
 
 
 
@@ -36,7 +36,7 @@
 \begin{abstract}
 Graphs are ubiquitous to model the relationship between nodes representing any type of data.
 Consequently, graph embedding algorithms have been proposed to map graph data to low dimensional space for downstream processing such as node classification and link prediction.
-With the increasing collection and processing of personal data, the graph embeddings can be trained on potentially private and sensitive data.
+With the increasing collection and processing of personal data, graph embeddings can be trained on potentially private and sensitive data.
 In this work, we study and quantify the privacy leakage in graph embeddings against different inference attacks specific to Graph based deep learning models.
 Given a blackbox Graph Neural Network for node classification, we propose node inference attack to infer whether a graph node corresponding to individual user's data was member of the model's training or not using the output prediction scores with an adversary advantage of 21\% to 56\% beyond random guess.
 We extend the node inference attack to an unsupervised setting where adversary has access to the released node embeddings which leaks information with an adversary advantage of ~9\% and 72\%.

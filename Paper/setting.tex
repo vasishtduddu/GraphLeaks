@@ -4,6 +4,7 @@
 \subsection{Datasets}
 
 For the node membership inference and graph reconstruction attack, we consider three standard benchmarking datasets: Pubmed, Citeseer and Cora.
+For the attribute inference attack, in turn, we consider two social networking datasets with anonymized sensitive attributes: Facebook\footnote{http://snap.stanford.edu/data/ego-Facebook.html} and LastFM\footnote{http://snap.stanford.edu/data/feather-lastfm-social.html}.
 
 \noindent\textbf{Pubmed.} The Pubmed Diabetes dataset consists of 19717 scientific publications from PubMed database pertaining to diabetes classified into one of three classes. The citation network consists of 44338 links. Each publication in the dataset is described by a TF/IDF weighted word vector from a dictionary which consists of 500 unique words.
 We use 60 train samples, 500 validation samples and 1000 test samples.
@@ -17,8 +18,6 @@ The number of training samples is 120, 500 validation samples and 1000 test samp
 The citation network consists of 5429 links. Each publication is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
 The dictionary consists of 1433 unique words.
 For training 140 samples are used, 300 validation samples and 1000 test samples.
-
-For the attribute inference attack, we consider two social networking datasets with anonymized sensitive attributes: Facebook\footnote{http://snap.stanford.edu/data/ego-Facebook.html} and LastFM\footnote{http://snap.stanford.edu/data/feather-lastfm-social.html}.
 
 \noindent\textbf{Facebook.} The dataset comprises of 4039 nodes representing different user accounts on the social network connected with each other through 88234 edges.
 Each user node comprises of different features including the gender, education, hometown etc.
@@ -79,3 +78,10 @@ For a binary classification problem of graph reconstruction to obtain the binary
 \noindent In case of attribute inference attack, we evaluate using the F1 score to balance both the recall and precision.
 
 \noindent\textbf{F1-Score.} This metric computes the harmonic mean between the precision and recall which estimates the percentage of samples in the target graph which are predicted as such.
+
+\subsection{Methodology}
+
+In this work, we specifically focus on inductive training of GNN where the model does not see test nodes during training unlike transductive learning where the entire graph and features are available apriori.
+Given the full graph $G_{full}$, we sample a subgraph $G_{train}$ which is used for training the models and evaluate the model performance on the held out graph $G_{full}-G_{train}$.
+Such an inductive setting enables the adversary to learn new information about the target model's training graph resulting in a privacy leakage.
+

@@ -34,6 +34,6 @@ The output of a layer with $F$ features takes the feature matrix along with the 
 The computation is given by $H^{(l+1)} = f_{agg}(H^{(l)}, A)$ with $H(0)=X$ and $H(L)=Z$, $L$ being the number of layers and $H$ is the intermediate activation.
 Based on the different aggregation function $f_{agg}()$, we obtain different GNN algorithms such as Graph Convolutional Network (GCN)~\cite{Kipf2016tc}, GraphSAGE \cite{NIPS20176703}, Graph Attention Networks (GAT)~\cite{velickovic2018graph} and Topology Adaptive GCN (TAGCN)~\cite{du2018topology}.
 
-In this work, we specifically focus on inductive training of GNN where the model does not see test nodes during training unlike transductive learning where the entire graph and features are available apriori.
-Given the full graph $G_{full}$, we sample a subgraph $G_{train}$ which is used for training the models and evaluate the model performance on the held out graph $G_{full}-G_{train}$.
-Such an inductive setting enables the adversary to learn new information about the target model's training graph resulting in a privacy leakage.
+%In this work, we specifically focus on inductive training of GNN where the model does not see test nodes during training unlike transductive learning where the entire graph and features are available apriori.
+%Given the full graph $G_{full}$, we sample a subgraph $G_{train}$ which is used for training the models and evaluate the model performance on the held out graph $G_{full}-G_{train}$.
+%Such an inductive setting enables the adversary to learn new information about the target model's training graph resulting in a privacy leakage.

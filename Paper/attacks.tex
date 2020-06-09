@@ -1,7 +1,7 @@
 \section{Attack Taxonomy}\label{attack}
 
-In this section, we describe the different attack threat models, methodology and adversary assumptions.
-In this work, we provide a comprehensive privacy analysis of graph embedding algorithms by proposing node membership inference attacks, graph reconstruction attacks and attribute inference attack.
+In this section, we describe the considered threat models as well as the methodology and adversary assumptions.
+%In this work, we provide a comprehensive privacy analysis of graph embedding algorithms by proposing node membership inference attacks, graph reconstruction attacks and attribute inference attack.
 
 
 \subsection{Node Membership Inference Attacks}
@@ -10,7 +10,7 @@ Node Membership Inference attacks allow information leakage in GNNs.
 Specifically, the goal of the adversary is to identify whether a user node $v$ is part of the graph $G_{train}$ used for training the target model.
 This is a binary classification problem where the adversary wants to learn the threshold to predict the membership of a user node.
 Depending on the adversary's knowledge about $f()$, we consider two settings: blackbox (with and without auxiliary knowledge) and whitebox. %, based on the adversary's knowledge about $f()$.
-As shown Figure~ref{mia}, to distinguish between members and non-members the training graph $G_{train}$, the blackbox attacks exploit the statistical difference in output predictions.
+As shown Figure~\ref{mia}, to distinguish between members and non-members the training graph $G_{train}$, the blackbox attacks exploit the statistical difference in output predictions.
 
 
 \begin{figure}[!htb]
@@ -175,9 +175,9 @@ Given the target released embeddings, the adversary then uses the trained decode
 
 \noindent\textbf{\underline{Link Inference Attack}}
 
-\noindent Link Inference attacks is a binary classification problem where the adversary aims to infer whether there exists a links between two nodes in the graph.
+\noindent Link inference attacks is a binary classification problem where the adversary aims to infer whether there exists a links between two nodes in the graph.
 This translates to identifying whether two people know each other in case of online social networks and identifying the friendship circle which can violate the privacy of the individual.
-Link Inference attacks naturally follow from the reconstruction attack where given the reconstructed graph, the adversary can check for an edge between two users using the adjacency matrix.
+Link inference attacks naturally follow from the reconstruction attack where given the reconstructed graph, the adversary can check for an edge between two users using the adjacency matrix.
 Given two user nodes $i$ and $j$, the adversary queries the reconstructed adjacency matrix $A_{target}^{rec}$ to infer whether there exists a link between $ij$ (if $A_{target}^{rec}[i][j] = 1$) or not (if $A_{target}^{rec}[i][j] = 0$).
 The success of link inference attack closely depends on the success of reconstructing the target adjacency matrix $A_{target}^{rec} \sim A_{target}$.
 
