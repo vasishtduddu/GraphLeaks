@@ -4,29 +4,28 @@ In this section, we describe the considered threat models as well as the methodo
 %In this work, we provide a comprehensive privacy analysis of graph embedding algorithms by proposing node membership inference attacks, graph reconstruction attacks and attribute inference attack.
 
 
-\subsection{Node Membership Inference Attacks}
+\subsection{Membership Inference Attacks}
 
-Node Membership Inference attacks allow information leakage in GNNs.
+Membership Inference attacks allow information leakage in GNNs.
 Specifically, the goal of the adversary is to identify whether a user node $v$ is part of the graph $G_{train}$ used for training the target model.
-This is a binary classification problem where the adversary wants to learn the threshold to predict the membership of a user node.
+This is a binary classification problem where the adversary learns the threshold to predict the membership of a user node.
 Depending on the adversary's knowledge about $f()$, we consider two settings: blackbox (with and without auxiliary knowledge) and whitebox. %, based on the adversary's knowledge about $f()$.
-As shown Figure~\ref{mia}, to distinguish between members and non-members the training graph $G_{train}$, the blackbox attacks exploit the statistical difference in output predictions.
+As shown Figure~\ref{mia}, to distinguish between members and non-members of training graph $G_{train}$, the blackbox attacks exploit the statistical difference in output predictions while the whitebox attack exploits the intermediate low dimensional embedding.
 
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.85\linewidth]{./figures/Attacks/MIA.pdf}
-\caption{To distinguish between members and non-members of $G_{train}$, the blackbox attacks exploit the statistical difference in output predictions while the whitebox attack exploits the intermediate low dimensional feature embedding.}
+\caption{Blackbox and Whitebox Inference attacks to distinguish between members and non-members of $G_{train}$.}
 \label{mia}
 \end{figure}
 
 
 \noindent\textbf{\underline{Inference using Output Predictions (Blackbox)}}
 
-\noindent In this setting, we consider the target model to be fully trained GNNs for node classification task trained inductively.
-The goal of the adversary in such a setting is to infer whether a node corresponding to user's features in the graph was used in training the target model $f()$.
-
-\noindent\textbf{Threat Model.} The adversary in a blackbox setting has only access to the model outputs $f(x;W)$ for a given input $x$.
+\noindent\textbf{Threat Model.} In this setting, we consider the target model as inductively trained GNN for node classification task.
+The adversary aims to infer whether a user's node in the graph was used in training the target model $f()$.
+In a blackbox setting, adversary has only access to the model outputs $f(x;W)$ for a given input $x$.
 The parameters of the trained model $W$ as well as the intermediate computation are inaccessible to the adversary.
 This is a practical setting, typically seen in the case of Machine Learning as a Service, where a trained model is deployed in the cloud and the adversary queries the model through an API and receives corresponding predictions.
 
@@ -53,15 +52,14 @@ This is a practical setting, typically seen in the case of Machine Learning as a
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/pubmed.pdf}}
     }
     \end{minipage}
-    \caption{Model predictions are more confident for nodes in train graph compared to test graph (left). The extent of overfitting can be detected by a non-overlapping region between the output prediction distributions across all data points (right).}
+    \caption{Model predictions are more confident for nodes in $G_{train}$ compared to test graph (left). The extent of overfitting can be detected by a non-overlapping region between the output prediction distributions across all data points (right).}
     \label{fig:NIAcause}
 \end{figure}
 
-\noindent\textbf{Attack Motivation.} Blackbox adversary exploits the statistical difference between the confidence in prediction on training and testing user node by the GNN~\cite{7958568}. % add a reference
-Figure~\ref{fig:NIAcause} (left) illustrates this difference for models trained on three datasets where the prediction confidence for one class is much higher for data points part of the training set.
+\noindent\textbf{Attack Motivation.} Blackbox adversary exploits the statistical difference between the confidence in prediction on training and testing data~\cite{membershipinf}. % add a reference
+Figure~\ref{fig:NIAcause} (left) illustrates this difference where the prediction confidence for one class is much higher for training data points.
 Predicting with higher confidence on seen $G_{train}$ nodes compared to unseen test nodes is referred as overfitting.
 This difference in the output prediction confidence directly results from a distinguishable output distribution between train and test data indicated by non-overlapping region between distributions (Figure~\ref{fig:NIAcause} (right)).
-Hence, blackbox inference attacks are aimed at exploiting the overfitting aspect of GNNs to infer whether a user's node was used in $G_{train}$.
 
 
 \noindent\textbf{Attack Methodology.} Based on the adversary's auxiliary knowledge about $G_{train}$ distribution, we categorize the attacks into: (a) shadow model attack with auxiliary knowledge of $G_{train}$'s distribution, and (b) confidence score attack with no prior knowledge.
@@ -86,7 +84,7 @@ The adversary trains a binary attack classifier $f_{attack}$ on the synthetic da
     \includegraphics[width=.3\textwidth]{figures/EmbeddingMIA/cora.pdf}\hfill
     \includegraphics[width=.3\textwidth]{figures/EmbeddingMIA/pubmed.pdf}
   }
-\caption{Whitebox membership inference attacks exploit the distinguishable intermediate feature embedding of train and test graph nodes for (a) Citeseer, (b) Cora and (c) Pubmed datasets.}
+\caption{Whitebox membership inference attacks exploit the distinguishable intermediate embedding of train and test graph nodes for Citeseer (left), Cora (middle) and Pubmed (right).}
 \label{embedding}
 \end{figure*}
 
@@ -97,10 +95,7 @@ Since, the adversary does not have prior knowledge to map the output predictions
 To conduct its attack, the adversary leverages the fact that graph nodes with higher output confidence prediction are likely to be members of $G_{train}$.
 Here, the adversary finds the output prediction with highest confidence and compares whether this is above a certain threshold to decide whether the corresponding graph node was in the model's training graph $G_{train}$ or not.
 A large output confidence indicates membership of the data point in the training data.
-In order to find the threshold which provides best inference leakage, the adversary sweeps across different values to select the value which best suits the application by looking at the recall.
-For instance, if the application requires to obtain a higher precision, the threshold is kept high while for higher recall the threshold is small. We choose our threshold as 0.5.
-
-
+The adversary sweeps across different values to select the threshold value which best suits the application.
 
 
 
@@ -108,22 +103,21 @@ For instance, if the application requires to obtain a higher precision, the thre
 
 \noindent\textbf{\underline{Inference using Graph Embedding (Whitebox)}}
 
-\noindent The adversary in a whitebox setting has access to the model output predictions $f(x; W)$ for an input $x$ as well as the model parameters $W$.
+\noindent\textbf{Threat Model.} The adversary in a whitebox setting has access to the model output predictions $f(x; W)$ for an input $x$ as well as the model parameters $W$.
 This allows the adversary to compute the intermediate computations after each layer which in our case corresponds to the embedding for each node as an output of graph convolutional layer.
 This is a strong adversary assumption but practical in cases such as federated learning where the intermediate computations and parameters can be observed~\cite{whitebox,collabinf}.
 
-\noindent\textbf{Attack Motivation.} As explained Section~\ref{background}, GNNs compute the low dimensional feature embedding for the input graph data.
-The parameters of the embedding function are updated in each iteration of training and tuned specifically for high performance on the train data resulting in a distinguishable footprint between feature embedding of train and test data points.
-Figure~\ref{embedding} illustrates this rationale by plotting feature embedding of train and test graph nodes for the three datasets after a dimension reduction using 2D-TSNE algorithm.
+\noindent\textbf{Attack Motivation.} As explained Section~\ref{background}, GNNs compute the low dimensional embedding for the input graph data.
+The parameters of GNNs are updated in each iteration of training and tuned specifically for high performance on the train data resulting in a distinguishable footprint between embedding of train and test data points.
+Figure~\ref{embedding} illustrates this rationale by plotting embedding of train and test graph nodes for the three datasets after a dimension reduction using 2D-TSNE algorithm.
 
 
-
-\noindent\textbf{Attack Methodology.} The attack is unsupervised since we assume the adversary has no prior knowledge to map the intermediate feature embeddings to a membership value. % (available as auxiliary knowledge in shadow model).
+\noindent\textbf{Attack Methodology.} The attack is unsupervised as the adversary has no prior knowledge to map the intermediate embeddings to a membership value. % (available as auxiliary knowledge in shadow model).
 The adversary trains an encoder-decoder network in unsupervised fashion to map the intermediate embedding to a single membership value.
-For an input graph node's embedding $\Psi (v)$, encoder $f_{enc}()$ generates a scalar membership value which is passed to decoder $f_{dec}(f_{enc}(\Psi (v)))$ to obtain $v$ by minimizing reconstruction loss: $||\Psi (v) - f_{dec}(f_{enc}(\Psi (v)))||_2^2$.
+For an input graph node's embedding $\Psi (v)$, encoder $f_{enc}()$ generates a scalar membership value which is passed to decoder $f_{dec}(f_{enc}(\Psi (v)))$ to obtain $\Psi(v)$ by minimizing reconstruction loss: $||\Psi (v) - f_{dec}(f_{enc}(\Psi (v)))||_2^2$.
 Given the membership values for different training and testing data points, K-Means clustering is used to cluster the nodes into two classes (members and non-members).
-For any new user node, the adversary can then use this clustering to map it as members or non-members of the training data.
-This novel whitebox attack exploits the difference in embedding representation between members and non-members of training graph data which is not possible for Deep Neural Networks trained on euclidean data where the intermediate activations are abstract (generalize well) and cannot be used to distinguish members and non-members~\cite{whitebox}.
+For any new user node, the adversary clusters as members or non-members of the training data.
+%This novel whitebox attack exploits the difference in embedding representation between members and non-members of training graph data which is not possible for Deep Neural Networks trained on euclidean data where the intermediate activations are abstract (generalize well) and cannot be used to distinguish members and non-members~\cite{whitebox}.
 
 
 
@@ -135,7 +129,7 @@ This novel whitebox attack exploits the difference in embedding representation b
 
 \subsection{Graph Reconstruction Attack}
 
-Given a sensitive target graph data ($G_{target}$) and the corresponding set of publicly released embeddings, $\Psi (v)$ $\forall v \in G_{target}$, the goal of the adversary in this setting is to reconstruct $G_{target}$ and the corresponding connections between the different nodes $A_{target}$.
+\noindent\textbf{Threat Model.} Given a sensitive target graph data ($G_{target}$) and the corresponding set of publicly released embeddings, $\Psi (v)$ $\forall v \in G_{target}$, the goal of the adversary in this setting is to reconstruct $G_{target}$ and the corresponding connections between the different nodes $A_{target}$.
 Here, the goal of the adversary is to reconstruct the adjacency matrix $A_{target}$ of the graph which is binary with $A_{ij}=1$ if there exists an edge between the node $i$ and $j$ and zero otherwise.
 While node membership inference is a subtle privacy violation of user's data, this is a stronger attack where the entire sensitive graph data is reconstructed by the adversary.
 
@@ -170,7 +164,7 @@ In Phase I, the adversary train an graph encoder-decoder attack model on $G_{aux
 The graph encoder $f_{enc}$ maps the adjacency matrix of $G_{aux}$ to corresponding node embeddings $\Psi (v)\rightarrow f_{enc}(v)$ $\forall$ $v \in V$ represented as adjacency matrix.
 The decoder $f_{dec}$ reconstructs the adjacency matrix $A_{rec} = f_{dec}(\Psi (v))$ while both the models are trained using backpropagation to minimize reconstruction loss: $||A - A_{rec}||_2^2$.
 For the attack model, we consider an architecture with graph convolution as encoder and a decoder which computes the dot product between the embedding vector $\Psi (v)$ and it's transpose $\Psi^T (v)$~\cite{gae}.
-The attack models are trained inductively on $G_{aux}$ and the tested on the target embeddings corresponding to target graph $G_{target}$ to reconstruct the training data.
+The attack models are trained inductively on $G_{aux}$ and the tested on the target embeddings corresponding to target graph $G_{target}$ to reconstruct the graph data.
 Given the target released embeddings, the adversary then uses the trained decoder attack model to map the released embeddings to the target adjacency matrix $A_{target}^{rec} = f_{dec}(\Psi (v'))$ $\forall$ $v'\in G_{target}$.
 
 \noindent\textbf{\underline{Link Inference Attack}}
@@ -185,7 +179,7 @@ The success of link inference attack closely depends on the success of reconstru
 
 \subsection{Attribute Inference Attack}
 
-While the precious attack focussed on sensitive graph data and inference attacks exploiting connections between different nodes, attribute inference attacks exploits user node's sensitive features.
+\noindent\textbf{Threat Model.} While the precious attack focussed on sensitive graph data and inference attacks exploiting connections between different nodes, attribute inference attacks exploits user node's sensitive features.
 Particularly, given the pair embedding of the subgraph nodes and corresponding sensitive attribute ($\Psi (v), s_{v})$ $\forall v \in G_{aux}$, the adversary aims to infer the sensitive attributes $s^*$ corresponding to the publicly release target embeddings $\Psi (v')$ $\forall v' \in G_{target}$.
 This is a practical assumption as a small fraction of users indeed make their information publicly available on their profile while other users prefer to keep such information private such as gender and location.
 

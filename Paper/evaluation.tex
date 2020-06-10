@@ -3,7 +3,7 @@
 In this section, we evaluate the privacy leakage from different attacks.
 The code for all the experiments is made publicly available for easy reproducibility\footnote{Anonymized for Submission}.
 
-\subsection{Node Inference Attack from Output Predictions (Blackbox)}
+\subsection{Membership Inference Attack from Output Predictions (Blackbox)}
 
 
 The overfitting for GraphSage architecture trained on the three datasets is given in Figure~\ref{fig:NIA}(a).
@@ -50,7 +50,7 @@ Specifically, aggregating features from larger number of nodes results in higher
 
 
 
-\subsection{Node Inference Attack from Graph Embeddings (Whitebox)}
+\subsection{Membership Inference Attack from Graph Embeddings (Whitebox)}
 
 We exploit the difference in intermediate feature representation of train and test data to perform membership inference attack in a whitebox setting.
 Results show that different models trained on PubMed dataset leak significantly more information between 20\% and 36\% over random guess accuracy.

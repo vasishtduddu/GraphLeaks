@@ -12,43 +12,43 @@ Further, the adversary can potentially reconstruct the graph from the low dimens
 Finally, graph embeddings capture important semantics from the input graph while maintaining the contextual information in the form of preferential connection which can be exploited to infer sensitive attributes about an individual.
 These three privacy attacks, namely, node membership inference, graph reconstruction and attribute inference, are examples of a direct privacy violation of the individual which can further be used without user consent. % for deciding medical insurance premium or job hiring.
 Further, companies spend enormous resources to annotate the training dataset to achieve state of the art performance and such attacks inferring training data also violates the Intellectual Property.
-Hence, studying and mitigating membership inference risk is crucial specifically with the onset of data protection laws such as HIPAA and GDPR.
+Hence, studying and mitigating privacy risks is crucial specifically with the onset of data protection laws such as HIPAA and GDPR.
 
 In the context of Machine Learning, a privacy violation occurs when an adversary infers something about a \textit{particular} user's data record in the training dataset which cannot be inferred from other models trained on similar data distribution~\cite{membershipinf,whitebox}.
-This information leakage is quantified using the success of inference attacks: membership inference and attribute inference and reconstruction attacks.
+This information leakage is quantified using the success of inference attacks: membership inference, attribute inference and reconstruction attacks.
 In attribute inference attacks, the attacker infers sensitive features of an individual's data record used in model's training.
 A stronger case of attribute inference is where the attacker reconstructs a portion of the sensitive training data itself, i.e, data reconstruction attack.
-In case of node membership inference, the adversary traces a particular individual's record to the training dataset, i.e., identify whether a given data record was a member of the training data.
+In case of membership inference, the adversary traces a particular individual's record to the training dataset, i.e., identify whether a given data record was a member of the training data.
 Prior literature in privacy attacks focus on models trained on non-graph data including text, images and speech to study the vulnerability to membership inference~\cite{ndss19salem,membershipinf}, attribute inference~\cite{attributeinf,attributeinf2}, property inference~\cite{propertyinf}, model inversion~\cite{modelinversion} attacks as well as model parameter and hyperparameter stealing attacks~\cite{timing,stealml,8418595}.
-However, the privacy risk in Graph-based machine learning models under adversarial setting is not yet explored.
-In this work, we evaluate the vulnerability of graph embedding algorithms along with GNNs against the threat from three privacy attacks: node membership inference, graph reconstruction and attribute inference.
+However, the privacy risk in Graph-based machine learning models under adversarial setting is not fully explored.
+In this work, we evaluate the vulnerability of graph embedding algorithms against the threat from three privacy attacks: membership inference, graph reconstruction and attribute inference.
 
 \noindent\textbf{Contributions.} In this work, we propose the first comprehensive privacy analysis of Graph Embedding algorithms under different threat models and adversary assumptions.
 We mainly focus on exploiting publicly released graph embeddings, used for different downstream tasks, under various attacks which violates the user's data privacy.
-First, we evaluate the privacy leakage under node membership inference attacks where the goal of the adversary is to infer whether a particular user's node was part of the graph used for training the model.
+First, we evaluate the privacy leakage under membership inference attacks where the goal of the adversary is to infer whether a particular user's node was part of the graph used for training the model.
 We first consider the specific case of downstream node classification task for convolution kernel based graph embedding with neural network and propose two attacks for node membership inference: shadow model attack and confidence score attack.
 Here, we show that the proposed attacks have an inference accuracy of 78.28\% (62.06\%) for Cora, 63.75\% (60.87\%) inference accuracy for Citesser and 60.89\% (55.51\%) inference accuracy for Pubmed for confidence (shadow) attack.
-We then propose an unsupervised attack for the more generic case of using just the graph embeddings to differentiate whether a given node was parting of the training graph or not.
+We then propose an unsupervised attack for the more generic case of using just the graph embeddings to differentiate whether a given node was part of the training graph or not.
 We show that an adversary in this setting can predict the training data with a high accuracy of 86\% for PubMed, 67.05\% for Citeseer and 57.80\% for Cora.
 
 
-Second, we propose a novel graph reconstruction attack where the adversary given access to the node embeddings of a subgraph, trains an encoder-decoder model to reconstruct the target graph.
-This attack has serious privacy implications since the adversary here is able to reconstruct the input graph dataset which can be potentially sensitive.
-The proposed attack results in reconstructing the target graph adjacency matrix with high precision: 0.722 for Cora, 0.778 for Citeseer and 0.95 for Pubmed.
+Second, we propose a novel graph reconstruction attack where the adversary, given access to the node embeddings of a subgraph, trains an encoder-decoder model to reconstruct the target graph from its publicly released embeddings.
+This attack has serious privacy implications since the adversary reconstructs the input graph dataset which can be potentially sensitive.
+The proposed attack has high precision: 0.722 for Cora, 0.778 for Citeseer and 0.95 for Pubmed.
 Indeed, on increasing the adversary's prior knowledge, the attack performance increases significantly.
-As an extension to reconstructing the graph data from the corresponding embeddings, we extend this attack for link inference, i.e, predicting whether there exist a link between any two nodes in the graph.
-Here, the inference attack accuracy for Citeseer dataset is 93.39\%, 90.73\% for Cora, 57.28\% for Pubmed compared to the 50\% baseline random guess accuracy.
+An important privacy implication is link inference, i.e, predicting whether there exist a link between any two nodes in the graph.
+We find the link inference attack accuracy for Citeseer dataset is 93.39\%, 90.73\% for Cora, 57.28\% for Pubmed compared to the 50\% baseline random guess accuracy.
 
 
 Finally, we propose the attribute inference attack for graph embeddings where the adversary infers sensitive attributes for user node in the graph using the released graph embeddings.
 We consider two state of the art unsupervised random walk based embedding, Node2Vec and DeepWalk, on two real-world social networking datasets: Facebook and LastFM, where the adversary aims to infer the user gender and location respectively.
-Given access to the embeddings of a subgraph and corresponding sensitive attributes made publicly available by a fraction of users, we model the problem of attribute inference as a supervised learning problem.
-The adversary trains a supervised attack model to predict sensitive hidden attribute for target users given the released publicly available embeddings.
-Here, the attack model's F1 score for DeepWalk on lastFM was as high as 0.65 and 0.83 for Node2Vec. For Facebook, the F1 score was 0.61 for Node2Vec and 0.59 for DeepWalk embeddings.
+Given access to the embeddings of a subgraph and corresponding sensitive attributes, we model attribute inference as a supervised learning problem.
+The adversary trains a supervised attack model to predict sensitive hidden attributes for target users given the released publicly available target embeddings.
+Here, the attack model's F1 score for DeepWalk on LastFM was as high as 0.65 for DeepWalk and 0.83 for Node2Vec. For Facebook, the F1 score was 0.61 for Node2Vec and 0.59 for DeepWalk.
 The paper indicates the serious data privacy risks in graph data processing algorithms and calls for further research to design privacy-preserving embedding algorithms for graph data.
 
-%\noindent\textbf{Paper Organization.}  
-We introduce the basic idea behind graph embedding algorithms and GNNs in Section~\ref{background}, followed by a detailed attack taxonomy and threat models for the three proposed privacy attacks: Node Membership Inference, Graph Reconstruction and Node Attribute Inference attacks in Section~\ref{attack}.
+%\noindent\textbf{Paper Organization.}
+We introduce the basic idea behind graph embedding algorithms and GNNs in Section~\ref{background}, followed by a detailed attack taxonomy and threat models for the three proposed privacy attacks: Membership Inference, Graph Reconstruction and Attribute Inference attacks in Section~\ref{attack}.
 We describe the experimental setup with the baselines and dataset descriptions in Section~\ref{setup}.
 Subsequently, the evaluations of the proposed attacks under different threat models and settings are given in Section~\ref{evaluation}.
-Finally, we discuss potential mitigation techniques to protect the graph data privacy in Section~\ref{discuss}.
+Finally, we discuss potential mitigation techniques to protect the graph data privacy in Section~\ref{conclusions}.
