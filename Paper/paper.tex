@@ -34,18 +34,46 @@
 \maketitle
 
 \begin{abstract}
+
+
+
+
+
 Graphs are ubiquitous to model the relationship between nodes representing various types of data.
-Consequently, graph embedding algorithms have been proposed to map graph data to low dimensional space for downstream processing such as node classification and link prediction.
-With the increasing collection and processing of personal data, graph embeddings can be trained on potentially private and sensitive graph data.
-In this work, we study and quantify the privacy leakage in graph embeddings by proposing novel inference attacks specific to Graph based deep learning models.
-Given a blackbox Graph Neural Network for node classification, we propose membership inference attack to infer whether a graph node corresponding to individual user's data was member of the model's training or not by exploiting the output prediction scores.
+Consequently, graph embeddings have been proposed to map graph data to low dimensional space for downstream processing such as node classification and link prediction.
+With the increasing collection and processing of personal data, graph embeddings can be trained on potentially private and sensitive data.
+In this work, we study and quantify the privacy leakage in graph embeddings by proposing novel inference attacks targeting graph based deep learning models.
+
+These inference attacks are considered in different settings.
+Firstly, given a blackbox Graph Neural Network for node classification, we propose a membership inference attack to infer whether a graph node corresponding to individual user's data was member of the model's training or not by exploiting the output prediction scores.
 In this blackbox setting, we show that the attack gives the adversary an inference advantage as high as 56\% beyond random guess.
-We further extend the attack to whitebox setting where adversary has access to the released node embeddings to indicate an adversary advantage as high as 72\%.
-These attacks exploit the fact graph embedding algorithms leave a distinguishable footprint between train and test data records.
-We then propose Graph Reconstruction attack where the adversary aims to reconstruct the target graph given the corresponding graph embeddings.
-In this threat model, we show the adversary can reconstruct the graph with high precision (AUC) of 0.77 (0.65), 0.72 (0.65) and 0.95 (0.94) for Citeseer, Cora and Pubmed respectively.
-A serious implication of reconstruction is link inference, where the adversary can infer the presence of an edge between two nodes in a graph with high accuracy of 93.39\% (Cora), 90.73\% (Citeseer) and 57.28\% (Pubmed) compared to 50\% random guess.
-Finally, we show that graph embeddings are strongly correlated to sensitive node attributes from which the adversary can infer gender and location for LastFM data (F1: 0.65 for DeepWalk and 0.83 for Node2Vec) and Facebook (F1: 0.59 for DeepWalk and 0.61 for Node2Vec).
+% what is the value for random guess? 50%? it is possible to say the benefice to the adversary differently?
+We then further extend this attack to whitebox setting where the adversary has access to the released node embeddings.
+This attack in whitebox setting exploits the fact graph embedding algorithms leave a distinguishable footprint between train and test data records, providing a confidence to the adversary as high as 72\% of accuracy.
+Secondly, we propose a Graph Reconstruction attack where the adversary aims to reconstruct the target graph given the corresponding graph embeddings.
+In this threat model, we show that the adversary can reconstruct the graph with high precision (more than 80\% of accuracy on average on three datasets).
+A serious implication of reconstruction is link inference, where the adversary can infer the presence of an edge between two nodes in a graph with high accuracy (around 30\% more confidence than a random guess).
+Finally, we propose an attribute inference attack where the adversary aims to infer a sensitive attribute.
+We show that graph embeddings are strongly correlated to node attributes from which the adversary can infer sensitive information such as gender and location.
+% do we consider collusion? remains to future work?
+
+
+
+
+
+
+%Graphs are ubiquitous to model the relationship between nodes representing various types of data.
+%Consequently, graph embedding algorithms have been proposed to map graph data to low dimensional space for downstream processing such as node classification and link prediction.
+%With the increasing collection and processing of personal data, graph embeddings can be trained on potentially private and sensitive graph data.
+%In this work, we study and quantify the privacy leakage in graph embeddings by proposing novel inference attacks specific to Graph based deep learning models.
+%Given a blackbox Graph Neural Network for node classification, we propose membership inference attack to infer whether a graph node corresponding to individual user's data was member of the model's training or not by exploiting the output prediction scores.
+%In this blackbox setting, we show that the attack gives the adversary an inference advantage as high as 56\% beyond random guess.
+%We further extend the attack to whitebox setting where adversary has access to the released node embeddings to indicate an adversary advantage as high as 72\%.
+%These attacks exploit the fact graph embedding algorithms leave a distinguishable footprint between train and test data records.
+%We then propose Graph Reconstruction attack where the adversary aims to reconstruct the target graph given the corresponding graph embeddings.
+%In this threat model, we show the adversary can reconstruct the graph with high precision (AUC) of 0.77 (0.65), 0.72 (0.65) and 0.95 (0.94) for Citeseer, Cora and Pubmed respectively.
+%A serious implication of reconstruction is link inference, where the adversary can infer the presence of an edge between two nodes in a graph with high accuracy of 93.39\% (Cora), 90.73\% (Citeseer) and 57.28\% (Pubmed) compared to 50\% random guess.
+%Finally, we show that graph embeddings are strongly correlated to sensitive node attributes from which the adversary can infer gender and location for LastFM data (F1: 0.65 for DeepWalk and 0.83 for Node2Vec) and Facebook (F1: 0.59 for DeepWalk and 0.61 for Node2Vec).
 \end{abstract}
 
 \begin{IEEEkeywords}
