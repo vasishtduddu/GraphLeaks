@@ -29,7 +29,8 @@ The dataset has 7,624 nodes connected together with 27,806 edges based on mutual
 Each user has attributes such as the music and artists they likes, location etc.
 
 
-\subsection{Baselines}
+\subsection{Embedding Algorithms}
+
 
 \noindent For the purpose of our experiments, we consider two classes of embedding algorithms: GNNs and random walk based.
 We consider the following GNN based embedding techniques:
@@ -46,15 +47,20 @@ GAT implicitly defines the weights using self-attention mechanism over the node 
 \noindent\textbf{Topology Adaptive GCN (TAGCN)~\cite{du2018topology}.} Instead of using the spectral convolutions for learning non-linear graph data, TAGCN proposes to use general K-localized filter convolution in the vertex domain.
 It replaces the fixed square filters in traditional spectral GCNs for the grid-structured input data volumes.
 
-\noindent For whitebox membership inference, we consider the embeddings from all the above four architectures while for blackbox setting we consider GraphSAGE algorithm.
+
+
+\noindent For membership inference, we consider the embeddings from all the above four architectures for the whitebox setting while for the blackbox setting we consider only GraphSAGE algorithm.
 In case of graph reconstruction attacks, we consider the generic GCN model as the encoder for the attack model.
-In case of attribute inference attacks, we consider two state of the art unsupervised graph embedding algorithms, namely, Node2Vec~\cite{node2vec} and DeepWalk~\cite{deepwalk}.
+In case of attribute inference attacks, we consider two state of the art unsupervised graph embedding algorithms based on random walk, namely, Node2Vec~\cite{node2vec} and DeepWalk~\cite{deepwalk}.
 
 \noindent\textbf{DeepWalk~\cite{deepwalk}.} The algorithm creates a transition matrix from the graph and samples random walks from the matrix.
 The nodes are viewed as words and the random walks are viewed as sentences and the resulting sequences are passed to Word2Vec and SkipGram~\cite{wordemb} to obtain node embeddings.
 
 \noindent\textbf{Node2Vec~\cite{node2vec}.} This is an extension of DeepWalk which combines Breadth First and Depth First search explorations on the graph to create biased random walks.
 The embeddings are computed using Word2Vec algorithm as mentioned above.
+
+
+
 
 
 
