@@ -26,7 +26,7 @@ We consider random walk based embeddings for attribute inference and deep learni
 
 The initial layers of a GNN are used to generate embedding for the input graphs which can be extended for node classification and link prediction tasks by attacking a classifier network as GNNs.
 The pre-processed graph in the form of embeddings along with the node features are represented as matrices for computation.
-The training of GNNs relies on message passing algorithm which is the weighted aggregation of features of neighbouring nodes $\mathcal{N}(v)$ to compute the feature of a particular node $v$.
+The training of GNNs relies on a message passing algorithm which is the weighted aggregation of features of neighbouring nodes $\mathcal{N}(v)$ to compute the feature of a particular node $v$.
 Given the features $x$ of a single node $v$, the GNN produces an output label $f(x;W)$ which captures the probability of the input node with features $x$ belonging to a particular class.
 The loss over the resultant classification for the node $v$ is then backpropagated to update the model weights for aggregation.
 Consider a $N\times D_F$ feature matrix $X$ where $N$ is the number of nodes, $D_F$ is the number of node features and an adjacency matrix $A$ which captures the representation of graph structure in matrix form.
