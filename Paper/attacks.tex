@@ -163,7 +163,7 @@ The adversary performs graph reconstruction in two phases (Figure~\ref{fig:recat
 In Phase I, the adversary train an graph encoder-decoder attack model on $G_{aux}$.
 The graph encoder $f_{enc}$ maps the adjacency matrix of $G_{aux}$ to corresponding node embeddings $\Psi (v)\rightarrow f_{enc}(v)$ $\forall$ $v \in V$ represented as adjacency matrix.
 The decoder $f_{dec}$ reconstructs the adjacency matrix $A_{rec} = f_{dec}(\Psi (v))$ while both the models are trained using backpropagation to minimize reconstruction loss: $||A - A_{rec}||_2^2$.
-For the attack model, we consider an architecture with graph convolution as encoder and a decoder which computes the dot product between the embedding vector $\Psi (v)$ and it's transpose $\Psi^T (v)$~\cite{gae}.
+For the attack model, we consider an architecture with graph convolution as encoder and a decoder which computes the dot product between the embedding vector $\Psi (v)$ and it's transpose $\Psi^T (v)$~\cite{Kipf2016tc}.
 The attack models are trained inductively on $G_{aux}$ and the tested on the target embeddings corresponding to target graph $G_{target}$ to reconstruct the graph data.
 Given the target released embeddings, the adversary then uses the trained decoder attack model to map the released embeddings to the target adjacency matrix $A_{target}^{rec} = f_{dec}(\Psi (v'))$ $\forall$ $v'\in G_{target}$.
 
