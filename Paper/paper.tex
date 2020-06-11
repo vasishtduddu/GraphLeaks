@@ -46,7 +46,7 @@ In this work, we study and quantify the privacy leakage in graph embeddings by p
 
 These inference attacks are considered in different settings.
 Firstly, given a blackbox Graph Neural Network for node classification, we propose a membership inference attack to infer whether a graph node corresponding to individual user's data was member of the model's training or not by exploiting the output prediction scores.
-In this blackbox setting, we show that the attack gives the adversary an inference advantage as high as 56\% beyond random guess.
+In this blackbox setting, we show that the attack results in privacy leakage of 28\% beyond random guess.
 % what is the value for random guess? 50%? it is possible to say the benefice to the adversary differently?
 We then further extend this attack to whitebox setting where the adversary has access to the released node embeddings.
 This attack in whitebox setting exploits the fact graph embedding algorithms leave a distinguishable footprint between train and test data records, providing a confidence to the adversary as high as 72\% of accuracy.
