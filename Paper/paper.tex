@@ -45,7 +45,7 @@ These attacks exploit the fact graph embedding algorithms leave a distinguishabl
 We then propose Graph Reconstruction attack where the adversary aims to reconstruct the target graph given the corresponding graph embeddings.
 In this threat model, we show the adversary can reconstruct the graph with high precision (AUC) of 0.77 (0.65), 0.72 (0.65) and 0.95 (0.94) for Citeseer, Cora and Pubmed respectively.
 A serious implication of reconstruction is link inference, where the adversary can infer the presence of an edge between two nodes in a graph with high accuracy of 93.39\% (Cora), 90.73\% (Citeseer) and 57.28\% (Pubmed) compared to 50\% random guess.
-Finally, we show that graph embeddings are strongly correlated to sensitive node attributes from which the adversary can infer gender and location for LastFM data (F1: 0.65 for DeepWalk and 0.83 for Node2Vec) and Facebook (F1: 0.59 for DeepWalk and 0.61 for Node2Vec).
+Finally, we show that graph embeddings are strongly correlated to sensitive node attributes from which the adversary can infer location from LastFM data (F1: 0.65 for DeepWalk and 0.83 for Node2Vec) and gender from Facebook data (F1: 0.59 for DeepWalk and 0.61 for Node2Vec).
 \end{abstract}
 
 \begin{IEEEkeywords}
