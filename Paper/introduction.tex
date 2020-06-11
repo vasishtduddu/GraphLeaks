@@ -28,7 +28,8 @@ However, the privacy risk in Graph-based machine learning models under adversari
 In this work, we propose the first comprehensive privacy analysis of Graph Embedding algorithms under different threat models and adversary assumptions.
 We mainly focus on exploiting publicly released graph embeddings trained with private data, used for different downstream tasks, under various attacks which violates the user's data privacy: membership inference, graph reconstruction and attribute inference.
 First, we evaluate the privacy leakage under membership inference attacks though a blackbox and whitebox settings.
-The blackbox setting considers the specific case of downstream node classification task for convolution kernel based graph embedding with neural network. In this setting, we propose two attacks for membership inference: shadow model attack and confidence score attack.
+The blackbox setting considers the specific case of downstream node classification task for convolution kernel based graph embedding with neural network. 
+In this setting, we propose two attacks for membership inference: with auxilary knowledge on the data distribution (shadow model attack) and without auxilary knowledge (confidence score attack).
 Here, we show that the proposed attacks have an inference accuracy of 78\%, 63\%, and 60\% for confidence score attack and 62\%, 60\%, and 55\% for shadow model attack, respectively for three different datasets, i.e., Cora, Citesser and Pubmed dataset.
 For the whitebox setting, we propose an unsupervised attack for the more generic case of using just the graph embeddings to differentiate whether a given node was part of the training graph or not.
 We show that an adversary in this setting can predict the training data with a high accuracy (70\% on average on the three datasets).
