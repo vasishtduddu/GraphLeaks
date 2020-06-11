@@ -3,51 +3,52 @@
 
 \subsection{Datasets}
 
-For the node membership inference and graph reconstruction attack, we consider three standard benchmarking datasets: Pubmed, Citeseer and Cora.
+For the membership inference and graph reconstruction attack, we consider three standard benchmarking datasets: Pubmed, Citeseer and Cora.
 For the attribute inference attack, in turn, we consider two social networking datasets with anonymized sensitive attributes: Facebook\footnote{http://snap.stanford.edu/data/ego-Facebook.html} and LastFM\footnote{http://snap.stanford.edu/data/feather-lastfm-social.html}.
 
-\noindent\textbf{Pubmed.} The Pubmed Diabetes dataset consists of 19717 scientific publications from PubMed database pertaining to diabetes classified into one of three classes. The citation network consists of 44338 links. Each publication in the dataset is described by a TF/IDF weighted word vector from a dictionary which consists of 500 unique words.
-We use 60 train samples, 500 validation samples and 1000 test samples.
+\noindent\textbf{Pubmed.} The Pubmed Diabetes dataset consists of 19,717 scientific publications from PubMed database pertaining to diabetes classified into one of three classes. The citation network consists of 44,338 links. Each publication in the dataset is described by a TF/IDF weighted word vector from a dictionary which consists of 500 unique words.
+We use 60 train samples, 500 validation samples and 1,000 test samples.
 
-\noindent\textbf{Citeseer.} The CiteSeer dataset consists of 3312 scientific publications classified into one of six classes.
-The citation network consists of 4732 links. Each publication in the dataset is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
-The dictionary consists of 3703 unique words.
-The number of training samples is 120, 500 validation samples and 1000 test samples.
+\noindent\textbf{Citeseer.} The CiteSeer dataset consists of 3,312 scientific publications classified into one of six classes.
+The citation network consists of 4,732 links. Each publication in the dataset is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
+The dictionary consists of 3,703 unique words.
+The number of training samples is 120, 500 validation samples and 1,000 test samples.
 
-\noindent\textbf{Cora.} The Cora dataset consists of 2708 scientific publications classified into one of seven classes.
-The citation network consists of 5429 links. Each publication is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
-The dictionary consists of 1433 unique words.
-For training 140 samples are used, 300 validation samples and 1000 test samples.
+\noindent\textbf{Cora.} The Cora dataset consists of 2,708 scientific publications classified into one of seven classes.
+The citation network consists of 5,429 links. Each publication is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
+The dictionary consists of 1,433 unique words.
+For training 140 samples are used, 300 validation samples and 1,000 test samples.
 
-\noindent\textbf{Facebook.} The dataset comprises of 4039 nodes representing different user accounts on the social network connected with each other through 88234 edges.
+\noindent\textbf{Facebook.} The dataset comprises of 4,039 nodes representing different user accounts on the social network connected with each other through 88,234 edges.
 Each user node comprises of different features including the gender, education, hometown etc.
-The user information has been anonymized and the interpretation of the features have been obscured, i.e, attributes `Male' or `Female' have been replace with `Gender 1' and `Gender 2'.
+The user information has been anonymized and the interpretation of the features have been obscured (i.e, attributes 'Male' and 'Female' have been replace with 'Gender 1' and 'Gender 2', respectively).
 
-\noindent\textbf{LastFM.} The dataset was collected in March 2020 using the public API provided by the social network specifically created for users from Asian countries.
-The dataset has 7624 nodes connected together with 27806 edges based on mutual follower relationships.
+
+\noindent\textbf{LastFM.} The dataset was collected in March 2,020 using the public API provided by the social network specifically created for users from Asian countries.
+The dataset has 7,624 nodes connected together with 27,806 edges based on mutual follower relationships.
 Each user has attributes such as the music and artists they likes, location etc.
 
 
 \subsection{Baselines}
 
 \noindent For the purpose of our experiments, we consider two classes of embedding algorithms: GNNs and random walk based.
-In this work, we consider the following GNN based embedding techniques:
+We consider the following GNN based embedding techniques:
 
-\noindent\textbf{Graph Convolutional Network (GCN)~\cite{Kipf2016tc}.} GCN computed the target node features from neighbouring nodes using matrix factorization, by normalizing adjacency matrix $A$ as $D^{-1}A$ where $D$ is the diagonal node degree matrix and results in averaging of neighbouring node features.
+\noindent\textbf{Graph Convolutional Network (GCN)~\cite{Kipf2016tc}.} GCN computes the target node features from neighbouring nodes using matrix factorization, by normalizing adjacency matrix $A$ as $D^{-1}A$ where $D$ is the diagonal node degree matrix and results in averaging of neighbouring node features.
 An additional trick is to use a symmetric normalization as $D^{-\frac{1}{2}}\hat{A}D^{-\frac{1}{2}}$.
 
-\noindent\textbf{GraphSAGE~\cite{NIPS20176703}.} GraphSAGE extends the operations in GCN to a more generic functions for transformation and aggregating of node features.
+\noindent\textbf{GraphSAGE~\cite{NIPS20176703}.} GraphSAGE extends the operations in GCN to more generic functions for transformation and aggregating of node features.
 While the embedding of graph data in GCN relies on matrix factorization, GraphSAGE uses node feature aggregation using mean, LSTM and pooling to learn the embedding function.
 
-\noindent\textbf{Graph Attention Networks (GAT)~\cite{velickovic2018graph}.} There are weights associated to featured during aggregation which are explicitly defined and learnt during training.
-GAT implicitly define the weights using self-attention mechanism over the node features.
+\noindent\textbf{Graph Attention Networks (GAT)~\cite{velickovic2018graph}.} There are weights associated with features during aggregation which are explicitly defined and learnt during training.
+GAT implicitly defines the weights using self-attention mechanism over the node features.
 
-\noindent\textbf{Topology Adaptive GCN (TAGCN)~\cite{du2018topology}.} Instead of using the spectral convolutions for learning non-linear graph data, TAGCN propose to use general K-localized filter convolution in the vertex domain.
+\noindent\textbf{Topology Adaptive GCN (TAGCN)~\cite{du2018topology}.} Instead of using the spectral convolutions for learning non-linear graph data, TAGCN proposes to use general K-localized filter convolution in the vertex domain.
 It replaces the fixed square filters in traditional spectral GCNs for the grid-structured input data volumes.
 
-\noindent For whitebox node inference, we consider the embeddings from all the above four architectures while for blackbox setting we consider GraphSAGE algorithm.
+\noindent For whitebox membership inference, we consider the embeddings from all the above four architectures while for blackbox setting we consider GraphSAGE algorithm.
 In case of graph reconstruction attacks, we consider the generic GCN model as the encoder for the attack model.
-In case of attributer inference attacks, we consider two state of the art unsupervised graph embedding algorithms, namely, Node2Vec~\cite{node2vec} and DeepWalk~\cite{deepwalk}.
+In case of attribute inference attacks, we consider two state of the art unsupervised graph embedding algorithms, namely, Node2Vec~\cite{node2vec} and DeepWalk~\cite{deepwalk}.
 
 \noindent\textbf{DeepWalk~\cite{deepwalk}.} The algorithm creates a transition matrix from the graph and samples random walks from the matrix.
 The nodes are viewed as words and the random walks are viewed as sentences and the resulting sequences are passed to Word2Vec and SkipGram~\cite{wordemb} to obtain node embeddings.
@@ -60,13 +61,19 @@ The embeddings are computed using Word2Vec algorithm as mentioned above.
 
 \subsection{Metrics}
 
-\noindent The performance of inference attacks, namely, node membership inference and link inference attacks, the inference accuracy is used to estimate the attack success.
+%\noindent The performance of inference attacks, namely, node membership inference and link inference attacks, the inference accuracy is used to estimate the attack success.
 
-\noindent\textbf{Inference Accuracy.} Both the inference attacks are a binary classification problem: node is part of the training data or not (membership inference) and there exists a link between any two nodes or not (Link Inference).
+\noindent To estimate the attack success of both membership and link inference, we consider the inference accuracy.
+
+\noindent\textbf{Inference Accuracy.} Membership and link inference are binary classification problems: node is part of the training data or not (membership inference) and there exists a link between any two nodes or not (Link Inference).
 Hence, the accuracy of random guess is 50\% and any higher accuracy indicates a privacy leakage about the model's sensitive training data.
+In order to compute the additional benefit the adversary gets in terms of performing the attack over random guess, we name 'adversary advantage' a metric computed as: $I_{adv} = 2*(I_{acc}-0.5)$.
+This metric gives an estimate of the information leakage from the model compared to a random guess.
 
-\noindent\textbf{Adversary Advantage.} In order to compute the additional benefit the adversary gets in terms of performing the attack over random guess, we use the adversary advantage as a metric computed as: $I_{adv} = 2*(I_{acc}-0.5)$.
-This gives an estimate of the information leakage from the model over and above a completely privacy preserving model (random guess).
+
+%\noindent\textbf{Adversary Advantage.} In order to compute the additional benefit the adversary gets in terms of performing the attack over random guess, we use the adversary advantage as a metric computed as: $I_{adv} = 2*(I_{acc}-0.5)$.
+%This gives an estimate of the information leakage from the model compared to a random guess.
+%This gives an estimate of the information leakage from the model over and above a completely privacy preserving model (random guess).
 
 \noindent For evaluating the performance of graph reconstruction attacks, we use two main metrics: precision and roc score.
 
@@ -74,6 +81,7 @@ This gives an estimate of the information leakage from the model over and above 
 
 \noindent\textbf{ROC-AUC Score.} The ROC curve plots the true positive rate on the y-axis and the false positive rate on the x-axis. The AUC score computes the area under the ROC curve to get how good the model distinguishes between different classes.
 For a binary classification problem of graph reconstruction to obtain the binary adjacency matrix, the random guess accuracy is 50\% and any higher accuracy indicates the adversary's advantage in reconstructing the target graph data.
+
 
 \noindent In case of attribute inference attack, we evaluate using the F1 score to balance both the recall and precision.
 
