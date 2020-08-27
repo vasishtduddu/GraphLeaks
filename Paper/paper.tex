@@ -1,5 +1,9 @@
-\documentclass[conference]{IEEEtran}
+%\documentclass[conference]{IEEEtran}
+\documentclass[sigconf]{acmart}
 
+\settopmatter{printacmref=false} % Removes citation information below abstract
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+\pagestyle{plain} % removes running headers
 
 \usepackage{multirow}
 \usepackage{dblfloatfix}
@@ -31,7 +35,7 @@
 
 
 
-\maketitle
+%\maketitle
 
 \begin{abstract}
 
@@ -83,10 +87,12 @@ We show that graph embeddings are strongly correlated to node attributes from wh
 %Finally, we show that graph embeddings are strongly correlated to sensitive node attributes from which the adversary can infer location from LastFM data (F1: 0.65 for DeepWalk and 0.83 for Node2Vec) and gender from Facebook data (F1: 0.59 for DeepWalk and 0.61 for Node2Vec).
 
 \end{abstract}
+\keywords{Privacy Leakage, Inference Attacks, Graph Neural Networks, Graph Embeddings.}
+%\begin{IEEEkeywords}
+%Privacy Leakage, Inference Attacks, Graph Neural Networks, Graph Embeddings.
+%\end{IEEEkeywords}
 
-\begin{IEEEkeywords}
-Privacy Leakage, Inference Attacks, Graph Neural Networks, Graph Embeddings.
-\end{IEEEkeywords}
+\maketitle
 
 \input{introduction}
 \input{background}
@@ -97,11 +103,13 @@ Privacy Leakage, Inference Attacks, Graph Neural Networks, Graph Embeddings.
 \input{related}
 \input{conclusions}
 
-{\footnotesize
-\bibliographystyle{IEEEtranS}
-\bibliography{paper.bib}
-}
+%{\footnotesize
+%\bibliographystyle{IEEEtranS}
+%\bibliography{paper.bib}
+%}
 
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{paper}
 
 
 \end{document}
