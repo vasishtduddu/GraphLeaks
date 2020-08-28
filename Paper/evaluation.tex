@@ -3,14 +3,15 @@
 In this section, we evaluate the privacy leakage from different attacks.
 The code for all the experiments is made publicly available for easy reproducibility\footnote{Anonymized for Submission}.
 
-\subsection{Membership Inference Attack from Output Predictions (Blackbox)}
+\subsection{Membership Inference Attack from Output Predictions (Blackbox setting)}
 
 
 The overfitting for GraphSage architecture trained on the three datasets is given in Figure~\ref{fig:NIA}(a).
-We evaluate the two blackbox inference attacks: shadow inference and confidence inference, which exploit the output predictions from the models.
-Under the confidence inference attacks, the inference accuracy for Cora is 78.28\% with an adversary's advantage of 27.48\%, 63.75\% inference accuracy for Citesser with an adversary's advantage of 56.56\% and 60.89\% inference accuracy for Pubmed datasets with an advantage of 21.78\%.
-In case of shadow model attacks, the inference accuracy for Cora is 62.06\% with an advantage of 21.74\%, inference accuracy of 60.87\% with an advantage of 24.12\% for Citeseer and inference accuracy of 55.51\% with 11.02\% advantage for Pubmed.
-The node membership leakage is higher in confidence attack compared to shadow model attack which is consistent with similar attack methodology for traditional machine learning models~\cite{princeton}.
+We evaluate the two blackbox inference attacks exploiting the output predictions from the models: shadow inference which uses auxiliary knowledge on the data distribution and confidence inference which does not use auxiliary knowledge.
+Results depicted Figure~\ref{fig:NIA}(b) show that under confidence inference attacks, the inference accuracy is 78.28\% (corresponding to an adversary's advantage of 27.48\%), 63.75\% (an adversary's advantage of 56.56\%), and 60.89\% (an advantage of 21.78\%) for Cora, Citesser, and Pubmed datasets, respectively.
+%Results show that under confidence inference attacks, the inference accuracy for Cora is 78.28\% with an adversary's advantage of 27.48\%, 63.75\% inference accuracy for Citesser with an adversary's advantage of 56.56\% and 60.89\% inference accuracy for Pubmed datasets with an advantage of 21.78\%.
+In case of shadow model attacks, the inference accuracy for Cora is 62.06\% (representing an adversary advantage of 21.74\%), 60.87\% for Citeseer (an adversary advantage of 24.12\%), 55.51\% for Pubmed dataset (an adversary advantage of 11.02\%).
+Membership leakage is thus higher in confidence attack (i.e., without auxiliary knowledge) compared to shadow model attack (i.e., with auxiliary knowledge). While counterintuitive, this result is consistent with similar attack methodology for traditional machine learning models~\cite{princeton}.
 
 
 \begin{figure}[!htb]
@@ -23,7 +24,7 @@ The node membership leakage is higher in confidence attack compared to shadow mo
     \includegraphics[width=0.5\linewidth,height=3.5cm, keepaspectratio]{figures/BBMIA/NodeIA.pdf}
     }
     \end{minipage}
-    \caption{Blackbox Node Inference attack uses the output predictions to give adversary an inference advantage.}
+    \caption{Blackbox membership inference attack uses the output predictions to give adversary an inference advantage.}
     \label{fig:NIA}
 \end{figure}
 
@@ -31,9 +32,9 @@ The node membership leakage is higher in confidence attack compared to shadow mo
 
 \textbf{Impact of Increasing Number of Layers.} We evaluate the performance of confidence attack on increasing the range of neighbourhood nodes used for aggregating the features (Figure~\ref{fig:numlayers}).
 To do that, we extend the range of the message passing algorithm by increasing the number of layers in the GNNs~\cite{klicpera2018combining,Li2018DeeperII}.
-On increasing the number of layers from 2 to 6, the inference accuracy decreases by 8\% for GCN, GraphSAGE.
-Interestingly, the generalization error increases (train accuracy remains the same but the test accuracy decreases) for Cora, Citeseer and Pubmed, but the inference accuracy continues to decrease which indicates that the influence of preferential connections between different nodes in the graph plays a significant role in influencing the inference accuracy. % than the generalization error.
-For large number of layers ($>$ 8 layers) in the GNN, for all the datasets and architectures, the model completely loses it's predictive power.
+On increasing the number of layers from 2 to 6, the inference accuracy decreases by 8\% for GCN. %, GraphSAGE.
+Interestingly, the generalization error increases (train accuracy remains the same but the test accuracy decreases) for Cora, Citeseer and Pubmed dataset, but the inference accuracy continues to decrease which indicates that the influence of preferential connections between different nodes in the graph plays a significant role in influencing the inference accuracy. % than the generalization error.
+For large number of layers ($>$ 8 layers) in the GNN, for all datasets and architectures, the model completely loses its predictive power.
 In general, the inference accuracy as well as prediction accuracy decreases with increasing the range of the message passing algorithm by increasing the layers from 2 to 16.
 This implies that the membership privacy leakage is influenced by the structured graph data with preferential connections between different nodes.
 Specifically, aggregating features from larger number of nodes results in higher averaging which reduces the distinguishability (over-smoothening of features) as model converges to random walk’s limit distribution~\cite{klicpera2018combining,Li2018DeeperII} which is crucial for inference attacks~\cite{membershipinf,ndss19salem}.
@@ -50,7 +51,7 @@ Specifically, aggregating features from larger number of nodes results in higher
 
 
 
-\subsection{Membership Inference Attack from Graph Embeddings (Whitebox)}
+\subsection{Membership Inference Attack from Graph Embeddings (Whitebox setting)}
 
 We exploit the difference in intermediate feature representation of train and test data to perform membership inference attack in a whitebox setting.
 Results show that different models trained on PubMed dataset leak significantly more information between 20\% and 36\% over random guess accuracy.
@@ -96,7 +97,7 @@ The curve for variation of AUC score and the average precision for the three dat
     \label{fig:valgraphrecon}
 \end{figure}
 
-\noindent\textbf{Impact of Adversary Knowledge.} On increasing the adversary's knowledge to 50% of the target graph, we observe an increase the attack performance.
+\noindent\textbf{Impact of Adversary Knowledge.} On increasing the adversary's knowledge to 50\% of the target graph, we observe an increase the attack performance.
 Specifically, the AUC score for Cora increases to 0.76 from 0.65 while the average precision increases to 0.81 from 0.722.
 In Citeseer dataset, the AUC score increases to 0.779 from 0.65 while the average precision increases to 0.828 from 0.778.
 Finally, for Pubmed dataset showed an increase to 0.95 from 0.94 AUC score and 0.96 from 0.95 average precision.
@@ -124,7 +125,7 @@ The same train-test-validation distribution is used for the three datasets with 
 \subsection{Attribute Inference Attack}
 
 In case of attribute inference attacks, we evaluate two state of the art embedding models: Node2Vec and DeepWalk, using three attack models: Neural Networks (NN), Random Forest (RF) and Support Vector Machine (SVM).
-We generate embeddings using the two algorithms on Facebook and LastFM dataset which contain gender and location as sensitive attributes respectively.
+We generate embeddings using the two algorithms on Facebook and LastFM dataset which contain gender and location as sensitive attributes, respectively.
 That is, the adversary infers user gender as a target sensitive attribute in Facebook dataset classified into one of three classes: Male, Female and Others.
 The location target attribute for LastFM dataset is categorized in 18 locations for the users in the network.
 

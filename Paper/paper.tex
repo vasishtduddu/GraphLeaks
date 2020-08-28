@@ -22,7 +22,7 @@
 \begin{document}
 %\pagestyle{plain}
 
-\title{Privacy Leakage in Graph Embedding}
+\title{Quantifying Privacy Leakage in Graph Embedding}
 
 
 %\author{
@@ -40,25 +40,10 @@
 \begin{abstract}
 
 
+Graph embeddings have been proposed to map graph data to low dimensional space for downstream processing such as node classification and link prediction. With the increasing collection of personal data, graph embeddings can be trained on private and sensitive data. In this work, we quantify the privacy leakage in graph embeddings through three inference attacks targeting Graph Neural Networks. We propose a membership inference attack to infer whether a graph node corresponding to individual user's data was member of the model's training or not. We consider a blackbox setting where the adversary exploits the output prediction scores, and a whitebox setting where the adversary has also access to the released node embeddings. This attack provides an accuracy up to 28\% (blackbox) 36\% (whitebox) beyond random guess by exploiting the distinguishable footprint between train and test data records left by the graph embedding. We propose a Graph Reconstruction attack where the adversary aims to reconstruct the target graph given the corresponding graph embeddings. Here, the adversary can reconstruct the graph with more than 80\% of accuracy and link inference between two nodes around 30\% more confidence than a random guess. We then propose an attribute inference attack where the adversary aims to infer a sensitive attribute. We show that graph embeddings are strongly correlated to node attributes from which the adversary can infer sensitive information such as gender and location.
 
 
 
-Graphs are ubiquitous to model the relationship between nodes representing various types of data.
-Consequently, graph embeddings have been proposed to map graph data to low dimensional space for downstream processing such as node classification and link prediction.
-With the increasing collection and processing of personal data, graph embeddings can be trained on potentially private and sensitive data.
-In this work, we study and quantify the privacy leakage in graph embeddings by proposing novel inference attacks targeting graph based deep learning models.
-These inference attacks are considered in different settings.
-Firstly, given a blackbox Graph Neural Network for node classification, we propose a membership inference attack to infer whether a graph node corresponding to individual user's data was member of the model's training or not by exploiting the output prediction scores.
-In this blackbox setting, we show that the attack results in privacy leakage of 28\% beyond random guess.
-% what is the value for random guess? 50%? it is possible to say the benefice to the adversary differently?
-We then further extend this attack to whitebox setting where the adversary has access to the released node embeddings.
-This attack in whitebox setting exploits the fact graph embedding algorithms leave a distinguishable footprint between train and test data records, providing attack accuracy as high as 36\% beyond random guess.
-Secondly, we propose a Graph Reconstruction attack where the adversary aims to reconstruct the target graph given the corresponding graph embeddings.
-In this threat model, we show that the adversary can reconstruct the graph with high precision (more than 80\% of accuracy on average on three datasets).
-A serious implication of reconstruction is link inference, where the adversary can infer the presence of an edge between two nodes in a graph with high accuracy (around 30\% more confidence than a random guess).
-Finally, we propose an attribute inference attack where the adversary aims to infer a sensitive attribute.
-We show that graph embeddings are strongly correlated to node attributes from which the adversary can infer sensitive information such as gender and location.
-% do we consider collusion? remains to future work?
 
 
 
