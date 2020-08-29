@@ -49,7 +49,7 @@ It replaces the fixed square filters in traditional spectral GCNs for the grid-s
 
 
 
-\noindent For membership inference, we consider the embeddings from all the above four architectures for the whitebox setting while for the blackbox setting we consider only GraphSAGE algorithm.
+\noindent For membership inference, we consider the embeddings from all the above four architectures for the whitebox setting while for the blackbox setting we consider only GraphSAGE algorithm as transductive training graphs models is challenging and GraphSAGE architecture is specifically designed to work in such training settings.
 In case of graph reconstruction attacks, we consider the generic GCN model as the encoder for the attack model.
 In case of attribute inference attacks, we consider two state of the art unsupervised graph embedding algorithms based on random walk, namely, Node2Vec~\cite{node2vec} and DeepWalk~\cite{deepwalk}.
 
@@ -98,4 +98,3 @@ For a binary classification problem of graph reconstruction to obtain the binary
 In this work, we specifically focus on inductive training of GNN where the model does not see test nodes during training unlike transductive learning where the entire graph and features are available apriori.
 Given the full graph $G_{full}$, we sample a subgraph $G_{train}$ which is used for training the models and evaluate the model performance on the held out graph $G_{full}-G_{train}$.
 Such an inductive setting enables the adversary to learn new information about the target model's training graph resulting in a privacy leakage.
-

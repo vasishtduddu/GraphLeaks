@@ -1,0 +1,540 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{44}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Abadi, Chu, Goodfellow, McMahan, Mironov,
+  Talwar, and Zhang}{Abadi et~al\mbox{.}}{2016}]%
+        {diffpriv}
+\bibfield{author}{\bibinfo{person}{Martin Abadi}, \bibinfo{person}{Andy Chu},
+  \bibinfo{person}{Ian Goodfellow}, \bibinfo{person}{H.~Brendan McMahan},
+  \bibinfo{person}{Ilya Mironov}, \bibinfo{person}{Kunal Talwar}, {and}
+  \bibinfo{person}{Li Zhang}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Deep Learning with Differential Privacy}. In
+  \bibinfo{booktitle}{\emph{CCS}}. \bibinfo{pages}{308–--318}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ateniese, Mancini, Spognardi, Villani, Vitali,
+  and Felici}{Ateniese et~al\mbox{.}}{2015}]%
+        {attributeinf2}
+\bibfield{author}{\bibinfo{person}{Giuseppe Ateniese},
+  \bibinfo{person}{Luigi~V. Mancini}, \bibinfo{person}{Angelo Spognardi},
+  \bibinfo{person}{Antonio Villani}, \bibinfo{person}{Domenico Vitali}, {and}
+  \bibinfo{person}{Giovanni Felici}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Hacking Smart Machines with Smarter Ones: How to
+  Extract Meaningful Data from Machine Learning Classifiers}.
+\newblock \bibinfo{journal}{\emph{Int. J. Secur. Netw.}} \bibinfo{volume}{10},
+  \bibinfo{number}{3} (\bibinfo{year}{2015}), \bibinfo{pages}{137--150}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bojchevski and G{\"{u}}nnemann}{Bojchevski and
+  G{\"{u}}nnemann}{2019}]%
+        {nodepoison}
+\bibfield{author}{\bibinfo{person}{Aleksandar Bojchevski} {and}
+  \bibinfo{person}{Stephan G{\"{u}}nnemann}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Adversarial Attacks on Node Embeddings via Graph
+  Poisoning}. In \bibinfo{booktitle}{\emph{ICML}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{{Cai}, {Zheng}, and {Chang}}{{Cai}
+  et~al\mbox{.}}{2018}]%
+        {survey}
+\bibfield{author}{\bibinfo{person}{H. {Cai}}, \bibinfo{person}{V.~W. {Zheng}},
+  {and} \bibinfo{person}{K.~C. {Chang}}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{A Comprehensive Survey of Graph Embedding:
+  Problems, Techniques, and Applications}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Knowledge and Data
+  Engineering}} \bibinfo{volume}{30}, \bibinfo{number}{9}
+  (\bibinfo{year}{2018}), \bibinfo{pages}{1616--1637}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Carlini, Liu, Erlingsson, Kos, and
+  Song}{Carlini et~al\mbox{.}}{2019}]%
+        {secretsharer}
+\bibfield{author}{\bibinfo{person}{Nicholas Carlini}, \bibinfo{person}{Chang
+  Liu}, \bibinfo{person}{{\'U}lfar Erlingsson}, \bibinfo{person}{Jernej Kos},
+  {and} \bibinfo{person}{Dawn Song}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{The Secret Sharer: Evaluating and Testing
+  Unintended Memorization in Neural Networks}. In
+  \bibinfo{booktitle}{\emph{{USENIX} Security}}. \bibinfo{pages}{267--284}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Chen, Perozzi, Al-Rfou, and Skiena}{Chen
+  et~al\mbox{.}}{2018}]%
+        {tutorial}
+\bibfield{author}{\bibinfo{person}{Haochen Chen}, \bibinfo{person}{Bryan
+  Perozzi}, \bibinfo{person}{Rami Al-Rfou}, {and} \bibinfo{person}{Steven
+  Skiena}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{title}{A Tutorial on Network Embeddings}.
+\newblock
+\newblock
+\showeprint{1808.02590}
+
+
+\bibitem[\protect\citeauthoryear{Du, Zhang, Wu, Moura, and Kar}{Du
+  et~al\mbox{.}}{2018}]%
+        {du2018topology}
+\bibfield{author}{\bibinfo{person}{Jian Du}, \bibinfo{person}{Shanghang Zhang},
+  \bibinfo{person}{Guanhang Wu}, \bibinfo{person}{José M.~F. Moura}, {and}
+  \bibinfo{person}{Soummya Kar}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{title}{Topology Adaptive Graph Convolutional Networks}.
+\newblock
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Duddu and Rao}{Duddu and Rao}{2019}]%
+        {stealml}
+\bibfield{author}{\bibinfo{person}{Vasisht Duddu} {and}
+  \bibinfo{person}{D~Vijay Rao}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Quantifying (Hyper) Parameter Leakage in Machine
+  Learning}.
+\newblock \bibinfo{journal}{\emph{arXiv:1910.14409}} (\bibinfo{year}{2019}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Duddu, Samanta, Rao, and Balas}{Duddu
+  et~al\mbox{.}}{2018}]%
+        {timing}
+\bibfield{author}{\bibinfo{person}{Vasisht Duddu}, \bibinfo{person}{Debasis
+  Samanta}, \bibinfo{person}{D~Vijay Rao}, {and} \bibinfo{person}{Valentina~E.
+  Balas}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{title}{Stealing Neural Networks via Timing Side Channels}.
+\newblock
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Fredrikson, Jha, and Ristenpart}{Fredrikson
+  et~al\mbox{.}}{2015}]%
+        {modelinversion}
+\bibfield{author}{\bibinfo{person}{Matt Fredrikson}, \bibinfo{person}{Somesh
+  Jha}, {and} \bibinfo{person}{Thomas Ristenpart}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Model Inversion Attacks That Exploit Confidence
+  Information and Basic Countermeasures}. In \bibinfo{booktitle}{\emph{CCS}}.
+  \bibinfo{pages}{1322–--1333}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ganju, Wang, Yang, Gunter, and Borisov}{Ganju
+  et~al\mbox{.}}{2018}]%
+        {propertyinf}
+\bibfield{author}{\bibinfo{person}{Karan Ganju}, \bibinfo{person}{Qi Wang},
+  \bibinfo{person}{Wei Yang}, \bibinfo{person}{Carl~A. Gunter}, {and}
+  \bibinfo{person}{Nikita Borisov}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Property Inference Attacks on Fully Connected
+  Neural Networks Using Permutation Invariant Representations}. In
+  \bibinfo{booktitle}{\emph{CCS}}. \bibinfo{pages}{619--633}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Gong and Liu}{Gong and Liu}{2016a}]%
+        {attributeinf}
+\bibfield{author}{\bibinfo{person}{N.Z. Gong} {and} \bibinfo{person}{B. Liu}.}
+  \bibinfo{year}{2016}\natexlab{a}.
+\newblock \showarticletitle{You Are Who You Know and How You Behave: Attribute
+  Inference Attacks via Users' Social Friends and Behaviors}. In
+  \bibinfo{booktitle}{\emph{USENIX Security}}. \bibinfo{pages}{979--995}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Gong and Liu}{Gong and Liu}{2016b}]%
+        {socialinfer}
+\bibfield{author}{\bibinfo{person}{Neil~Zhenqiang Gong} {and}
+  \bibinfo{person}{Bin Liu}.} \bibinfo{year}{2016}\natexlab{b}.
+\newblock \showarticletitle{You Are Who You Know and How You Behave: Attribute
+  Inference Attacks via Users{\textquoteright} Social Friends and Behaviors}.
+  In \bibinfo{booktitle}{\emph{USENIX Security}}. \bibinfo{pages}{979--995}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Grover and Leskovec}{Grover and
+  Leskovec}{2016}]%
+        {node2vec}
+\bibfield{author}{\bibinfo{person}{Aditya Grover} {and} \bibinfo{person}{Jure
+  Leskovec}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{node2vec: Scalable Feature Learning for Networks}.
+  In \bibinfo{booktitle}{\emph{KDD}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hamilton, Ying, and Leskovec}{Hamilton
+  et~al\mbox{.}}{2017}]%
+        {NIPS20176703}
+\bibfield{author}{\bibinfo{person}{Will Hamilton}, \bibinfo{person}{Zhitao
+  Ying}, {and} \bibinfo{person}{Jure Leskovec}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Inductive Representation Learning on Large Graphs}.
+\newblock In \bibinfo{booktitle}{\emph{NeurIPS}},
+  \bibfield{editor}{\bibinfo{person}{I.~Guyon}, \bibinfo{person}{U.~V.
+  Luxburg}, \bibinfo{person}{S.~Bengio}, \bibinfo{person}{H.~Wallach},
+  \bibinfo{person}{R.~Fergus}, \bibinfo{person}{S.~Vishwanathan}, {and}
+  \bibinfo{person}{R.~Garnett}} (Eds.). \bibinfo{pages}{1024--1034}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hayes, Melis, Danezis, and Cristofaro}{Hayes
+  et~al\mbox{.}}{2019}]%
+        {logan}
+\bibfield{author}{\bibinfo{person}{Jamie Hayes}, \bibinfo{person}{Luca Melis},
+  \bibinfo{person}{George Danezis}, {and} \bibinfo{person}{Emiliano~De
+  Cristofaro}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{LOGAN: Membership Inference Attacks Against
+  Generative Models}.
+\newblock \bibinfo{journal}{\emph{PETS}} \bibinfo{number}{1}
+  (\bibinfo{year}{2019}), \bibinfo{pages}{133 -- 152}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{He, Jia, Backes, Gong, and Zhang}{He
+  et~al\mbox{.}}{2020}]%
+        {linksteal}
+\bibfield{author}{\bibinfo{person}{Xinlei He}, \bibinfo{person}{Jinyuan Jia},
+  \bibinfo{person}{Michael Backes}, \bibinfo{person}{Neil~Zhenqiang Gong},
+  {and} \bibinfo{person}{Yang Zhang}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{title}{Stealing Links from Graph Neural Networks}.
+\newblock
+\newblock
+\showeprint{arXiv 2005.02131}
+
+
+\bibitem[\protect\citeauthoryear{Jia and Gong}{Jia and Gong}{2018}]%
+        {attriguard}
+\bibfield{author}{\bibinfo{person}{Jinyuan Jia} {and}
+  \bibinfo{person}{Neil~Zhenqiang Gong}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Attriguard: A Practical Defense against Attribute
+  Inference Attacks via Adversarial Machine Learning}. In
+  \bibinfo{booktitle}{\emph{USENIX Security}}. \bibinfo{pages}{513--–529}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Jia, Salem, Backes, Zhang, and Gong}{Jia
+  et~al\mbox{.}}{2019}]%
+        {memguard}
+\bibfield{author}{\bibinfo{person}{Jinyuan Jia}, \bibinfo{person}{Ahmed Salem},
+  \bibinfo{person}{Michael Backes}, \bibinfo{person}{Yang Zhang}, {and}
+  \bibinfo{person}{Neil~Zhenqiang Gong}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{MemGuard: Defending against Black-Box Membership
+  Inference Attacks via Adversarial Examples}. In
+  \bibinfo{booktitle}{\emph{CCS}}. \bibinfo{pages}{259–--274}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Jia, Wang, Zhang, and Gong}{Jia
+  et~al\mbox{.}}{2017}]%
+        {socialinfer2}
+\bibfield{author}{\bibinfo{person}{Jinyuan Jia}, \bibinfo{person}{Binghui
+  Wang}, \bibinfo{person}{Le Zhang}, {and} \bibinfo{person}{Neil~Zhenqiang
+  Gong}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{AttriInfer: Inferring User Attributes in Online
+  Social Networks Using Markov Random Fields}. In
+  \bibinfo{booktitle}{\emph{WWW}}. \bibinfo{pages}{1561–--1569}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kipf and Welling}{Kipf and Welling}{2017}]%
+        {Kipf2016tc}
+\bibfield{author}{\bibinfo{person}{Thomas~N. Kipf} {and} \bibinfo{person}{Max
+  Welling}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Semi-Supervised Classification with Graph
+  Convolutional Networks}. In \bibinfo{booktitle}{\emph{ICLR}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Klicpera, Bojchevski, and Günnemann}{Klicpera
+  et~al\mbox{.}}{2019}]%
+        {klicpera2018combining}
+\bibfield{author}{\bibinfo{person}{Johannes Klicpera},
+  \bibinfo{person}{Aleksandar Bojchevski}, {and} \bibinfo{person}{Stephan
+  Günnemann}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Combining Neural Networks with Personalized
+  PageRank for Classification on Graphs}. In \bibinfo{booktitle}{\emph{ICLR}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Li, Han, and Wu}{Li et~al\mbox{.}}{2018}]%
+        {Li2018DeeperII}
+\bibfield{author}{\bibinfo{person}{Qimai Li}, \bibinfo{person}{Zhichao Han},
+  {and} \bibinfo{person}{Xiao-Ming Wu}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Deeper Insights into Graph Convolutional Networks
+  for Semi-Supervised Learning}. In \bibinfo{booktitle}{\emph{AAAI}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Melis, Song, De~Cristofaro, and
+  Shmatikov}{Melis et~al\mbox{.}}{2019}]%
+        {collabinf}
+\bibfield{author}{\bibinfo{person}{Luca Melis}, \bibinfo{person}{Congzheng
+  Song}, \bibinfo{person}{Emiliano De~Cristofaro}, {and}
+  \bibinfo{person}{Vitaly Shmatikov}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Exploiting Unintended Feature Leakage in
+  Collaborative Learning}. In \bibinfo{booktitle}{\emph{SP}}.
+  \bibinfo{pages}{691--706}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Mikolov, Sutskever, Chen, Corrado, and
+  Dean}{Mikolov et~al\mbox{.}}{2013}]%
+        {wordemb}
+\bibfield{author}{\bibinfo{person}{Tomas Mikolov}, \bibinfo{person}{Ilya
+  Sutskever}, \bibinfo{person}{Kai Chen}, \bibinfo{person}{Greg Corrado}, {and}
+  \bibinfo{person}{Jeffrey Dean}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Distributed Representations of Words and Phrases
+  and Their Compositionality}. In \bibinfo{booktitle}{\emph{NIPS}}.
+  \bibinfo{pages}{3111–--3119}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Nasr, Shokri, and Houmansadr}{Nasr
+  et~al\mbox{.}}{2018}]%
+        {advreg}
+\bibfield{author}{\bibinfo{person}{Milad Nasr}, \bibinfo{person}{Reza Shokri},
+  {and} \bibinfo{person}{Amir Houmansadr}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Machine Learning with Membership Privacy Using
+  Adversarial Regularization}. In \bibinfo{booktitle}{\emph{CCS}}.
+  \bibinfo{pages}{634–--646}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{{Nasr}, {Shokri}, and {Houmansadr}}{{Nasr}
+  et~al\mbox{.}}{2019}]%
+        {whitebox}
+\bibfield{author}{\bibinfo{person}{M. {Nasr}}, \bibinfo{person}{R. {Shokri}},
+  {and} \bibinfo{person}{A. {Houmansadr}}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Comprehensive Privacy Analysis of Deep Learning:
+  Passive and Active White-box Inference Attacks against Centralized and
+  Federated Learning}. In \bibinfo{booktitle}{\emph{SP}}.
+  \bibinfo{pages}{739--753}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Pan, Zhang, Ji, and Yang}{Pan
+  et~al\mbox{.}}{2020}]%
+        {nlp}
+\bibfield{author}{\bibinfo{person}{X. Pan}, \bibinfo{person}{M. Zhang},
+  \bibinfo{person}{S. Ji}, {and} \bibinfo{person}{M. Yang}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Privacy Risks of General-Purpose Language Models}.
+  In \bibinfo{booktitle}{\emph{SP}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Perozzi, Al-Rfou, and Skiena}{Perozzi
+  et~al\mbox{.}}{2014}]%
+        {deepwalk}
+\bibfield{author}{\bibinfo{person}{Bryan Perozzi}, \bibinfo{person}{Rami
+  Al-Rfou}, {and} \bibinfo{person}{Steven Skiena}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{DeepWalk: Online Learning of Social
+  Representations}. In \bibinfo{booktitle}{\emph{KDD}}.
+  \bibinfo{pages}{701--710}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Salem, Zhang, Humbert, Berrang, Fritz, and
+  Backes}{Salem et~al\mbox{.}}{2019}]%
+        {ndss19salem}
+\bibfield{author}{\bibinfo{person}{Ahmed Salem}, \bibinfo{person}{Yang Zhang},
+  \bibinfo{person}{Mathias Humbert}, \bibinfo{person}{Pascal Berrang},
+  \bibinfo{person}{Mario Fritz}, {and} \bibinfo{person}{Michael Backes}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{ML-Leaks: Model and Data Independent Membership
+  Inference Attacks and Defenses on Machine Learning Models}. In
+  \bibinfo{booktitle}{\emph{NDSS}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{{Shokri}, {Stronati}, {Song}, and
+  {Shmatikov}}{{Shokri} et~al\mbox{.}}{2017}]%
+        {membershipinf}
+\bibfield{author}{\bibinfo{person}{R. {Shokri}}, \bibinfo{person}{M.
+  {Stronati}}, \bibinfo{person}{C. {Song}}, {and} \bibinfo{person}{V.
+  {Shmatikov}}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Membership Inference Attacks Against Machine
+  Learning Models}. In \bibinfo{booktitle}{\emph{SP}}. \bibinfo{pages}{3--18}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Song and Raghunathan}{Song and
+  Raghunathan}{2020}]%
+        {textembleak}
+\bibfield{author}{\bibinfo{person}{Congzheng Song} {and}
+  \bibinfo{person}{Ananth Raghunathan}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{title}{Information Leakage in Embedding Models}.
+\newblock
+\newblock
+\showeprint{2004.00053}
+
+
+\bibitem[\protect\citeauthoryear{Song, Ristenpart, and Shmatikov}{Song
+  et~al\mbox{.}}{2017}]%
+        {memorize}
+\bibfield{author}{\bibinfo{person}{Congzheng Song}, \bibinfo{person}{Thomas
+  Ristenpart}, {and} \bibinfo{person}{Vitaly Shmatikov}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Machine Learning Models That Remember Too Much}. In
+  \bibinfo{booktitle}{\emph{CCS}}. \bibinfo{pages}{587–--601}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Song and Shmatikov}{Song and
+  Shmatikov}{2020}]%
+        {overlearninginf}
+\bibfield{author}{\bibinfo{person}{Congzheng Song} {and}
+  \bibinfo{person}{Vitaly Shmatikov}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Overlearning Reveals Sensitive Attributes}. In
+  \bibinfo{booktitle}{\emph{ICLR}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Song and Mittal}{Song and Mittal}{2020}]%
+        {princeton}
+\bibfield{author}{\bibinfo{person}{Liwei Song} {and} \bibinfo{person}{Prateek
+  Mittal}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{title}{Systematic Evaluation of Privacy Risks of Machine
+  Learning Models}.
+\newblock
+\newblock
+\showeprint{2003.10595}
+
+
+\bibitem[\protect\citeauthoryear{van~der Maaten and Hinton}{van~der Maaten and
+  Hinton}{2008}]%
+        {tsne}
+\bibfield{author}{\bibinfo{person}{Laurens van~der Maaten} {and}
+  \bibinfo{person}{Geoffrey Hinton}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Visualizing Data using {t-SNE}}.
+\newblock \bibinfo{journal}{\emph{Journal of Machine Learning Research}}
+  (\bibinfo{year}{2008}), \bibinfo{pages}{2579--2605}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Veličković, Cucurull, Casanova, Romero,
+  Liò, and Bengio}{Veličković et~al\mbox{.}}{2018}]%
+        {velickovic2018graph}
+\bibfield{author}{\bibinfo{person}{Petar Veličković},
+  \bibinfo{person}{Guillem Cucurull}, \bibinfo{person}{Arantxa Casanova},
+  \bibinfo{person}{Adriana Romero}, \bibinfo{person}{Pietro Liò}, {and}
+  \bibinfo{person}{Yoshua Bengio}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Graph Attention Networks}. In
+  \bibinfo{booktitle}{\emph{ICLR}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{{Wang} and {Gong}}{{Wang} and {Gong}}{2018}]%
+        {8418595}
+\bibfield{author}{\bibinfo{person}{B. {Wang}} {and} \bibinfo{person}{N.~Z.
+  {Gong}}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Stealing Hyperparameters in Machine Learning}. In
+  \bibinfo{booktitle}{\emph{SP}}. \bibinfo{pages}{36--52}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Xu, Yuan, Wu, and Phan}{Xu
+  et~al\mbox{.}}{2018}]%
+        {dpne}
+\bibfield{author}{\bibinfo{person}{Depeng Xu}, \bibinfo{person}{Shuhan Yuan},
+  \bibinfo{person}{Xintao Wu}, {and} \bibinfo{person}{HaiNhat Phan}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{DPNE: Differentially Private Network Embedding}.
+  \bibinfo{pages}{235--246}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Xuan-Son~Vu}{Xuan-Son~Vu}{2019}]%
+        {dptext}
+\bibfield{author}{\bibinfo{person}{Lili~Jiang Xuan-Son~Vu, Son N.~Tran}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{dpUGC: Learn Differentially Private Representation
+  for User Generated Contents}. In \bibinfo{booktitle}{\emph{CICLing}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhou, Cui, Zhang, Yang, Liu, Wang, Li, and
+  Sun}{Zhou et~al\mbox{.}}{2018}]%
+        {zhou2018graph}
+\bibfield{author}{\bibinfo{person}{Jie Zhou}, \bibinfo{person}{Ganqu Cui},
+  \bibinfo{person}{Zhengyan Zhang}, \bibinfo{person}{Cheng Yang},
+  \bibinfo{person}{Zhiyuan Liu}, \bibinfo{person}{Lifeng Wang},
+  \bibinfo{person}{Changcheng Li}, {and} \bibinfo{person}{Maosong Sun}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Graph neural networks: A review of methods and
+  applications}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1812.08434}}
+  (\bibinfo{year}{2018}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhu, Zhang, Cui, and Zhu}{Zhu
+  et~al\mbox{.}}{2019}]%
+        {robustdef2}
+\bibfield{author}{\bibinfo{person}{Dingyuan Zhu}, \bibinfo{person}{Ziwei
+  Zhang}, \bibinfo{person}{Peng Cui}, {and} \bibinfo{person}{Wenwu Zhu}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Robust Graph Convolutional Networks Against
+  Adversarial Attacks}. In \bibinfo{booktitle}{\emph{KDD}}.
+  \bibinfo{pages}{1399–--1407}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Z\"{u}gner, Akbarnejad, and
+  G\"{u}nnemann}{Z\"{u}gner et~al\mbox{.}}{2018}]%
+        {graphatt}
+\bibfield{author}{\bibinfo{person}{Daniel Z\"{u}gner}, \bibinfo{person}{Amir
+  Akbarnejad}, {and} \bibinfo{person}{Stephan G\"{u}nnemann}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Adversarial Attacks on Neural Networks for Graph
+  Data}. In \bibinfo{booktitle}{\emph{KDD}}. \bibinfo{pages}{2847--–2856}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Z\"{u}gner and G\"{u}nnemann}{Z\"{u}gner and
+  G\"{u}nnemann}{2019}]%
+        {robustdef1}
+\bibfield{author}{\bibinfo{person}{Daniel Z\"{u}gner} {and}
+  \bibinfo{person}{Stephan G\"{u}nnemann}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Certifiable Robustness and Robust Training for
+  Graph Convolutional Networks}. In \bibinfo{booktitle}{\emph{KDD}}.
+  \bibinfo{pages}{246--–256}.
+\newblock
+
+
+\end{thebibliography}
