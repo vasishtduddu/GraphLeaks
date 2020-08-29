@@ -1,4 +1,6 @@
-\section{Discussions and Conclusions}\label{conclusions}
+\vspace{-2mm}
+\section{Discussions and Conclusions}
+\label{conclusions}
 
 We discuss some potential mitigation strategies to lower the privacy risks from the proposed algorithms and keep the evaluations as future work.
 Lowering the precision of the embedding vector for each node by rounding can help reduce the attack model from learning rich features about the inputs~\cite{membershipinf,nlp}.
@@ -6,7 +8,8 @@ In the proposed attacks, the attacker model is a machine learning algorithm vuln
 The embeddings can be released with an additional adversarial noise to misclassify the target model while additionally ensuring utility~\cite{attriguard,memguard}.
 Further, the inference attacks can be modelled within the training process as a minimax adversarial training with joint optimization to minimize the model loss using the graph embeddings (e.g., GNNs) while maximising the adversary's loss on inferring the sensitive inputs~\cite{advreg,textembleak}.
 Finally, Differential Privacy to the embeddings provides a theoretical bound on the total privacy leakage from the downstream processing from embeddings on an individual's data point~\cite{dptext,dpne}.
-However, the efficacy of the potential mitigations against the proposed privacy attacks are to be studied as part of the future work.
+However, the efficacy of potential mitigations against the proposed privacy attacks are left for future work.
+%to be studied as part of the future work.
 
 
 

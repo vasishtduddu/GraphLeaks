@@ -1,4 +1,5 @@
-\section{Related Work}\label{related}
+\section{Related Work}
+\label{related}
 
 
 Inference attacks that violate data privacy have been explored in the context of traditional machine learning models.
@@ -7,8 +8,8 @@ These attacks are further extended to collaborative learning~\cite{collabinf,whi
 On the other hand, reconstruction attacks infer private attributes of the inputs passed to the models~\cite{attributeinf, attributeinf2, propertyinf, modelinversion}.
 Other privacy attacks aim to extract hyperparameters~\cite{8418595}, reverse engineer the model architecture and parameters using side channels~\cite{timing} or the output predictions~\cite{stealml}.
 Memorization of data by Neural Networks has been attributed as a major cause for privacy leakage~\cite{memorize,secretsharer,overlearninginf}.
-
-Further, recent works have indicated privacy risks in Graph NNs where an adversary can infer the presence of a link between two nodes using a manual threshold between the distance of two node features~\cite{linksteal}
+%
+Further, recent works have indicated privacy risks in Graph NNs where an adversary can infer the presence of a link between two nodes using a manual threshold between the distance of two node features~\cite{linksteal}.
 This attack however, is subsumed within our more generic attack methodology where we extract the entire adjacency matrix which can be used to infer the presence of links.
 Text models have been shown to leak user data through attribute inference and inversion attacks~\cite{textembleak,nlp}. 
 However, a direct application of these attacks is not possible in case of high dimensional graphs and requires additional consideration to the network structure making our problem challenging.
