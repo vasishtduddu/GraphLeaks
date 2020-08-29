@@ -4,7 +4,7 @@ A large number of real-world applications require processing graph data which co
 Deep Learning and more precisely Convolutional Neural Networks have shown tremendous performance over non-graph data such as images by capturing the spatial relation between pixels of image and extracting features over multiple layers.
 However, this machine learning scheme has shown its limits for graph data and the learning on such data is still challenging~\cite{zhou2018graph}.
 Indeed, the models have to capture the connections in the data while ensuring invariance of graph data representation, even without fixed ordering between the nodes (i.e., the adjacency matrix representing the connections between nodes varies but still results in the same graph). %different
-To overcome this limitation, the graph data is passed through embedding algorithms which map the large graphs to lower dimensions which are then used for downstream processing with Graph Neural Networks (GNNs).
+To overcome this limitation, the graph data is passed through embedding algorithms which map the large graphs to lower dimensions which are then used for downstream processing with GNNs.
 Graph embedding algorithms enable models operating on low dimensional euclidean datasets (i.e., such as images) to graph data by mapping them into a low dimensional embedding.
 We represent a graph as $G=(V,E)$ where $V$ represents the vertex set consisting of nodes \{$v_1,...,v_n$\} where the connections between the edges $E$ is represented as a symmetric, sparse adjacency matrix $A$ $\in$ $R_{nxn}$ where $a_{ij}$ denotes the edge weight between nodes with $a_{ij}= 0$ for missing edges.
 

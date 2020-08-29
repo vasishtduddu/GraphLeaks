@@ -9,11 +9,11 @@ Such large graph dataset raises the question of privacy specifically if the algo
 Consider a graph capturing the outbreak of a disease where the nodes represent the individuals, medical symptoms as the node features and the edges indicating the disease transmission.
 Typically, in such datasets a GNN provides state of the art performance for predicting disease for an arbitrary user in the graph (node classification) and determining the future outbreak (link prediction).
 For such embedding models which do not account privacy, an adversary can however infer the health status of a particular user (node in graph) by identifying whether the user was part of the training data or not.
-Further, the adversary can potentially reconstruct the sensitive graph input from the low dimensional embeddings.% enabling the adversary to extract the sensitive input to the models.
+Further, the adversary can potentially reconstruct the sensitive graph input from the low dimensional embeddings. % enabling the adversary to extract the sensitive input to the models.
 Finally, graph embeddings capture important semantics from the input graph while maintaining the contextual information in the form of preferential connection which can be exploited to infer sensitive attributes about an individual.
 These three privacy attacks, namely, membership inference, graph reconstruction and attribute inference, are examples of a direct privacy violation of the individual which can further be used without user consent. % for deciding medical insurance premium or job hiring.
 Further, companies spend enormous resources to annotate the training dataset to achieve state of the art performance and such attacks inferring training data also violates the Intellectual Property.
-Hence, studying and mitigating privacy risks is crucial specifically with the onset of data protection laws such as HIPAA and GDPR.
+%Hence, studying and mitigating privacy risks is crucial specifically with the onset of data protection laws such as HIPAA and GDPR.
 
 In the context of Machine Learning, a privacy violation occurs when an adversary infers something about a \textit{particular} user's data record in the training dataset which cannot be inferred from other models trained on similar data distribution~\cite{membershipinf,whitebox}.
 This information leakage is quantified using the success of inference attacks. %: membership inference, attribute inference and reconstruction attacks.
@@ -21,7 +21,7 @@ In attribute inference attacks, the attacker infers sensitive features of an ind
 A stronger case of attribute inference is where the attacker reconstructs a portion of the sensitive training data itself, i.e, data reconstruction attack.
 In case of membership inference, the adversary traces a particular individual's record to the training dataset, i.e., identify whether a given data record was a member of the training data.
 Prior literature in privacy attacks focus on models trained on non-graph data including text, images and speech to study the vulnerability to membership inference~\cite{ndss19salem,membershipinf}, attribute inference~\cite{attributeinf,attributeinf2}, property inference~\cite{propertyinf}, model inversion~\cite{modelinversion} attacks as well as model parameter and hyperparameter stealing attacks~\cite{timing,stealml,8418595}.
-However, the privacy risk in Graph-based machine learning models under adversarial setting is not fully explored.
+However, the privacy risk in graph-based machine learning models under adversarial setting has not been quantified. % is not fully explored.
 
 %In this work, we evaluate the vulnerability of graph embedding algorithms against the threat from three privacy attacks: membership inference, graph reconstruction and attribute inference.
 
@@ -49,10 +49,48 @@ The adversary trains a supervised attack model to predict sensitive hidden attri
 Here, the attack model's F1 score (capturing the balance between precision and recall) on LastFM was as high as 0.65 for DeepWalk and 0.83 for Node2Vec.
 For Facebook, the F1 score was 0.61 for Node2Vec and 0.59 for DeepWalk.
 The paper indicates the serious data privacy risks in graph data processing algorithms and calls for further research to design privacy-preserving embedding algorithms for graph data.
+%
+The code for all the experiments is made publicly available for easy reproducibility\footnote{Anonymized for Submission}.
 
 %\noindent\textbf{Paper Organization.}
 The paper is organized as follows.
-We introduce the basic idea behind graph embedding algorithms and GNNs in Section~\ref{background}, followed by a detailed attack taxonomy and threat models for the three proposed privacy attacks: Membership Inference, Graph Reconstruction and Attribute Inference attacks in Section~\ref{attack}.
-We describe the experimental setup with the baselines and dataset descriptions in Section~\ref{setup}.
-Subsequently, the evaluations of the proposed attacks under different threat models and settings are given in Section~\ref{evaluation}.
-Finally, we discuss potential mitigation techniques to protect the graph data privacy and conclude in Section~\ref{conclusions}.
+Backgrounds on graph embedding algorithms and GNNs are introduced Section~\ref{background}, followed by the considered threat models Section~\ref{attack}. % for the three proposed privacy attacks:
+%We introduce the basic idea behind graph embedding algorithms and GNNs in Section~\ref{background}, followed by a detailed attack taxonomy and threat models for the three proposed privacy attacks: Membership Inference, Graph Reconstruction and Attribute Inference attacks in Section~\ref{attack}.
+Experimental setup is described Section~\ref{setup}.
+%We describe the experimental setup with the baselines and dataset descriptions in Section~\ref{setup}.
+Evaluations of the proposed attacks are then given Section~\ref{evaluation} before related work Section~\ref{related}
+%Subsequently, the evaluations of the proposed attacks under different threat models and settings are given in Section~\ref{evaluation}.
+Finally, discussions and concluding remarks are given Section~\ref{conclusions}.
+%Finally, we discuss potential mitigation techniques to protect the graph data privacy and conclude in Section~\ref{conclusions}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
