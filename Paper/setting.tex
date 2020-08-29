@@ -10,7 +10,7 @@ For the attribute inference attack, in turn, we consider two social networking d
 We use 60 train samples, 500 validation samples and 1,000 test samples.
 
 \noindent\textbf{Citeseer.} The CiteSeer dataset consists of 3,312 scientific publications classified into one of six classes.
-The citation network consists of 4,732 links. 
+The citation network consists of 4,732 links.
 Each publication is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
 %Each publication in the dataset is described by a 0/1-valued word vector indicating the absence/presence of the corresponding word from the dictionary.
 The dictionary consists of 3,703 unique words.
@@ -53,7 +53,7 @@ It replaces the fixed square filters in traditional spectral GCNs for the grid-s
 
 
 
-\noindent For membership inference, we consider the embeddings from all the above four architectures for the whitebox setting while for the blackbox setting we consider only GraphSAGE algorithm as transductive training graphs models is challenging and GraphSAGE architecture is specifically designed to work in such training settings.
+\noindent For membership inference, we consider the embeddings from all the above four architectures for the whitebox setting while for the blackbox setting we consider only GraphSAGE algorithm as inductive training graphs models is challenging and GraphSAGE architecture is specifically designed to work in such training settings.
 In case of graph reconstruction attacks, we consider the generic GCN model as the encoder for the attack model.
 In case of attribute inference attacks, we consider two state of the art unsupervised graph embedding algorithms based on random walk, namely, Node2Vec~\cite{node2vec} and DeepWalk~\cite{deepwalk}.
 
