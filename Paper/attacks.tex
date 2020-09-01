@@ -133,7 +133,7 @@ The attack is unsupervised as the adversary has no prior knowledge to map the in
 The adversary trains an encoder-decoder network in unsupervised fashion to map the intermediate embedding to a single membership value.
 For an input graph node's embedding $\Psi (v)$, encoder $f_{enc}()$ generates a scalar membership value which is passed to decoder $f_{dec}(f_{enc}(\Psi (v)))$ to obtain $\Psi(v)$ by minimizing reconstruction loss: $||\Psi (v) - f_{dec}(f_{enc}(\Psi (v)))||_2^2$.
 Given the membership values for different training and testing data points, K-Means clustering is used to cluster nodes into two classes (members and non-members).
-For any new user node, the adversary clusters as members or non-members of the training data.
+For any new user node, the adversary then clusters as members or non-members of the training data.
 %This novel whitebox attack exploits the difference in embedding representation between members and non-members of training graph data which is not possible for Deep Neural Networks trained on euclidean data where the intermediate activations are abstract (generalize well) and cannot be used to distinguish members and non-members~\cite{whitebox}.
 
 

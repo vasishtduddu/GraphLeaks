@@ -15,13 +15,13 @@ These three privacy attacks, namely, membership inference, graph reconstruction 
 Further, companies spend enormous resources to annotate the training dataset to achieve state of the art performance and such attacks inferring training data also violates the Intellectual Property.
 %Hence, studying and mitigating privacy risks is crucial specifically with the onset of data protection laws such as HIPAA and GDPR.
 
-In the context of Machine Learning, a privacy violation occurs when an adversary infers something about a \textit{particular} user's data record in the training dataset which cannot be inferred from other models trained on similar data distribution~\cite{membershipinf,whitebox}.
+In the context of Machine Learning (ML), a privacy violation occurs when an adversary infers something about a \textit{particular} user's data record in the training dataset which cannot be inferred from other models trained on similar data distribution~\cite{membershipinf,whitebox}.
 This information leakage is quantified using the success of inference attacks. %: membership inference, attribute inference and reconstruction attacks.
 In attribute inference attacks, the attacker infers sensitive features of an individual's data record used in model's training.
 A stronger case of attribute inference is where the attacker reconstructs a portion of the sensitive training data itself, i.e, data reconstruction attack.
 In case of membership inference, the adversary traces a particular individual's record to the training dataset, i.e., identify whether a given data record was a member of the training data.
 Prior literature in privacy attacks focus on models trained on non-graph data including text, images and speech to study the vulnerability to membership inference~\cite{ndss19salem,membershipinf}, attribute inference~\cite{attributeinf,attributeinf2}, property inference~\cite{propertyinf}, model inversion~\cite{modelinversion} attacks as well as model parameter and hyperparameter stealing attacks~\cite{timing,stealml,8418595}.
-However, the privacy risk in graph-based machine learning models under adversarial setting has not been quantified. % is not fully explored.
+While well studied in traditional ML, the privacy risk in graph-based ML models under adversarial setting has not been fully explored and quantified. % is not fully explored.
 
 %In this work, we evaluate the vulnerability of graph embedding algorithms against the threat from three privacy attacks: membership inference, graph reconstruction and attribute inference.
 
