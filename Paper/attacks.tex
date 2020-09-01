@@ -17,8 +17,10 @@ As shown Figure~\ref{mia}, to distinguish between members and non-members of tra
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.85\linewidth]{./figures/Attacks/MIA.pdf}
-\caption{Blackbox and Whitebox Inference attacks to distinguish between members and non-members of $G_{train}$.}
+%\caption{Blackbox and Whitebox Inference attacks to distinguish between members and non-members of $G_{train}$.}
+\caption{Blackbox and whitebox inference attacks to distinguish members and non-members of $G_{train}$.}
 \label{mia}
+\vspace{-2mm}
 \end{figure}
 
 
@@ -42,20 +44,24 @@ This is a practical setting, typically seen in the case of Machine Learning as a
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/citeseer.pdf}}
     }
 
+\vspace{-1mm}
     \subfigure[Cora]{
    	\label{fig:mem_soft_label}
     \includegraphics[width=0.5\linewidth]{figures/BBMIA/cora_hist.pdf}
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/cora.pdf}}
     }
 
+\vspace{-1mm}
     \subfigure[Pubmed]{
     \label{fig:mem_soft_label}
     \includegraphics[width=0.5\linewidth]{figures/BBMIA/pubmed_hist.pdf}
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/pubmed.pdf}}
     }
     \end{minipage}
+\vspace{-3mm}
     \caption{Model predictions are more confident for nodes in $G_{train}$ compared to test graph (left). The extent of overfitting can be detected by a non-overlapping region between the output prediction distributions across all data points (right).}
     \label{fig:NIAcause}
+\vspace{-3mm}
 \end{figure}
 
 %\noindent\textbf{Attack Motivation.}
@@ -93,6 +99,7 @@ The adversary trains a binary attack classifier $f_{attack}$ on the synthetic da
   }
 \caption{Whitebox membership inference attacks exploit the distinguishable intermediate embedding of train and test graph nodes for Citeseer (left), Cora (middle) and Pubmed dataset (right).}
 \label{embedding}
+\vspace{-2mm}
 \end{figure*}
 
 
@@ -164,8 +171,10 @@ Hence, there exists a strong correlation between the released graph embeddings a
     \includegraphics[width=0.6\linewidth]{./figures/Attacks/reconstruction2.pdf}
     }
     \end{minipage}
+\vspace{-2mm}
     \caption{Attack methodology for graph reconstruction from released embeddings.}
     \label{fig:recattack}
+\vspace{-1mm}
 \end{figure}
 
 
