@@ -40,25 +40,25 @@ This is a practical setting, typically seen in the case of Machine Learning as a
     \centering
     \subfigure[Citeseer]{
     \label{fig:nonmem_soft_label}
-    \includegraphics[width=0.5\linewidth]{figures/BBMIA/citeseer_hist.pdf}
+    \includegraphics[width=0.48\linewidth]{figures/BBMIA/citeseer_hist.pdf}
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/citeseer.pdf}}
     }
 
-\vspace{-1mm}
+\vspace{-2mm}
     \subfigure[Cora]{
    	\label{fig:mem_soft_label}
-    \includegraphics[width=0.5\linewidth]{figures/BBMIA/cora_hist.pdf}
+    \includegraphics[width=0.48\linewidth]{figures/BBMIA/cora_hist.pdf}
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/cora.pdf}}
     }
 
-\vspace{-1mm}
+\vspace{-2mm}
     \subfigure[Pubmed]{
     \label{fig:mem_soft_label}
-    \includegraphics[width=0.5\linewidth]{figures/BBMIA/pubmed_hist.pdf}
+    \includegraphics[width=0.48\linewidth]{figures/BBMIA/pubmed_hist.pdf}
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/pubmed.pdf}}
     }
     \end{minipage}
-\vspace{-3mm}
+\vspace{-4mm}
     \caption{Model predictions are more confident for nodes in $G_{train}$ compared to test graph (left). The extent of overfitting can be detected by a non-overlapping region between the output prediction distributions across all data points (right).}
     \label{fig:NIAcause}
 \vspace{-3mm}
@@ -75,6 +75,18 @@ This difference in the output prediction confidence directly results from a dist
 %Based on the adversary's auxiliary knowledge about $G_{train}$ distribution, we categorize the attacks into: (a) shadow model attack with auxiliary knowledge of $G_{train}$'s distribution, and (b) confidence score attack with no prior knowledge.\\
 We consider two attacks within the blackbox setting: (a) shadow model attack and (b) confidence score attack.
 
+\begin{figure}[!htb]
+\centering
+    \includegraphics[width=.23\textwidth]{figures/EmbeddingMIA/citeseer.pdf}\hfill
+    \includegraphics[width=.23\textwidth]{figures/EmbeddingMIA/cora.pdf}\hfill
+
+    \includegraphics[width=.23\textwidth]{figures/EmbeddingMIA/pubmed.pdf}
+\vspace{-2mm}
+\caption{Whitebox membership inference attacks exploit the distinguishable intermediate embedding of train and test graph nodes for Citeseer (left), Cora (middle) and Pubmed dataset (right).}
+\label{embedding}
+\vspace{-3mm}
+\end{figure}
+
 \noindent\textbf{Shadow Attack:} The shadow attack relies on the adversary training a local substitute model with similar functionality as the target model to identify characteristics of members and non-members.
 %The adversary is assumed to have an auxiliary graph dataset $G_{aux}$ sampled from the same underlying data distribution as $G_{train}$.
 %This is a practical assumption where social networks have publicly available API enabling the adversary to obtain subgraphs of the original social network graph.
@@ -90,17 +102,7 @@ Hence, $f_{local}$ is used as a proxy for $f()$ to learn the mapping between the
 The adversary trains a binary attack classifier $f_{attack}$ on the synthetic dataset used to predict whether a new user node was member of $G_{train}$.\\
 
 
-\begin{figure*}[!htb]
-\centering
-\resizebox{0.8\textwidth}{!}{
-    \includegraphics[width=.3\textwidth]{figures/EmbeddingMIA/citeseer.pdf}\hfill
-    \includegraphics[width=.3\textwidth]{figures/EmbeddingMIA/cora.pdf}\hfill
-    \includegraphics[width=.3\textwidth]{figures/EmbeddingMIA/pubmed.pdf}
-  }
-\caption{Whitebox membership inference attacks exploit the distinguishable intermediate embedding of train and test graph nodes for Citeseer (left), Cora (middle) and Pubmed dataset (right).}
-\label{embedding}
-\vspace{-2mm}
-\end{figure*}
+
 
 
 
@@ -120,12 +122,14 @@ The attack success in this case is reliant on the quality of auxiliary data for 
 %\noindent\textbf{Threat Model.}
 The adversary in a whitebox setting has access to the model output predictions $f(x; W)$ for an input $x$ as well as the model parameters $W$.
 This allows the adversary to compute the intermediate computations after each layer which in our case corresponds to the embedding for each node as an output of graph convolutional layer.
-This is a strong adversary assumption but practical in the case of federated learning where the intermediate computations and parameters can be observed~\cite{whitebox,collabinf}.
+This is a strong adversary assumption but practical in the case of federated learning where intermediate computations can be observed~\cite{whitebox,collabinf}.
+%This is a strong adversary assumption but practical in the case of federated learning where the intermediate computations and parameters can be observed~\cite{whitebox,collabinf}.
 
 %\noindent\textbf{Attack Motivation.}
 As explained Section~\ref{background}, GNNs compute the low dimensional embedding for the input graph data.
 The parameters of GNNs are updated in each iteration of training and are tuned specifically for high performance on the train data resulting in a distinguishable footprint between embedding of train and test data points.
-Figure~\ref{embedding} illustrates this rationale by plotting embedding of train and test graph nodes for the three datasets after a dimension reduction using 2D-TSNE algorithm~\cite{tsne}.
+%Figure~\ref{embedding} illustrates this rationale by plotting embedding of train and test graph nodes for the three datasets after a dimension reduction using 2D-TSNE algorithm~\cite{tsne}.
+Figure~\ref{embedding} illustrates this rationale by plotting embedding of train and test graph nodes after a dimension reduction using 2D-TSNE algorithm~\cite{tsne}.
 
 
 %\noindent\textbf{Attack Methodology.}
@@ -135,8 +139,6 @@ For an input graph node's embedding $\Psi (v)$, encoder $f_{enc}()$ generates a 
 Given the membership values for different training and testing data points, K-Means clustering is used to cluster nodes into two classes (members and non-members).
 For any new user node, the adversary then clusters as members or non-members of the training data.
 %This novel whitebox attack exploits the difference in embedding representation between members and non-members of training graph data which is not possible for Deep Neural Networks trained on euclidean data where the intermediate activations are abstract (generalize well) and cannot be used to distinguish members and non-members~\cite{whitebox}.
-
-
 
 
 
@@ -156,7 +158,24 @@ Graph embeddings are specially computed to ensure that the underlying graph prop
 In other words, the embeddings capture the rich semantic, invariant and structural information about the graph, for instance, by preserving proximity to the neighbouring nodes.
 Hence, there exists a strong correlation between the released graph embeddings and the actual graph which can be exploited to reconstruct the graph data.
 
-\begin{figure}[!htb]
+
+
+
+%\noindent\textbf{Attack Methodology.}
+The adversary is assumed to have knowledge of the auxiliary subgraph $G_{aux}$ which is sampled from the same distribution as the target graph $G_{target}$.
+Empirically, this is obtained by sampling two non-overlapping subgraphs from the full graph dataset.
+The adversary performs graph reconstruction in two phases (Figure~\ref{fig:recattack}).
+In Phase I, the adversary trains a graph encoder-decoder attack model on $G_{aux}$.
+The graph encoder $f_{enc}$ maps the adjacency matrix of $G_{aux}$ to corresponding node embeddings $\Psi (v)\rightarrow f_{enc}(v)$ $\forall$ $v \in V$ represented as adjacency matrix.
+The decoder $f_{dec}$ reconstructs the adjacency matrix $A_{rec} = f_{dec}(\Psi (v))$ while both the models are trained using backpropagation to minimize reconstruction loss: $||A - A_{rec}||_2^2$.
+For the attack model, we consider an architecture with graph convolution as encoder and a decoder which computes the dot product between the embedding vector $\Psi (v)$ and its transpose $\Psi^T (v)$~\cite{Kipf2016tc}.
+The attack models are trained on $G_{aux}$ and tested on the target embeddings corresponding to target graph $G_{target}$ to reconstruct the graph data.
+Given the target released embeddings, the adversary then uses the trained decoder attack model to map the released embeddings to the target adjacency matrix $A_{target}^{rec} = f_{dec}(\Psi (v'))$ $\forall$ $v'\in G_{target}$.\\
+
+
+
+
+\begin{figure}[t]
     \centering
     \begin{minipage}[b]{1\linewidth}
     \centering
@@ -176,18 +195,6 @@ Hence, there exists a strong correlation between the released graph embeddings a
     \label{fig:recattack}
 \vspace{-1mm}
 \end{figure}
-
-
-%\noindent\textbf{Attack Methodology.}
-The adversary is assumed to have knowledge of the auxiliary subgraph $G_{aux}$ which is sampled from the same distribution as the target graph $G_{target}$.
-Empirically, this is obtained by sampling two non-overlapping subgraphs from the full graph dataset.
-The adversary performs graph reconstruction in two phases (Figure~\ref{fig:recattack}).
-In Phase I, the adversary trains a graph encoder-decoder attack model on $G_{aux}$.
-The graph encoder $f_{enc}$ maps the adjacency matrix of $G_{aux}$ to corresponding node embeddings $\Psi (v)\rightarrow f_{enc}(v)$ $\forall$ $v \in V$ represented as adjacency matrix.
-The decoder $f_{dec}$ reconstructs the adjacency matrix $A_{rec} = f_{dec}(\Psi (v))$ while both the models are trained using backpropagation to minimize reconstruction loss: $||A - A_{rec}||_2^2$.
-For the attack model, we consider an architecture with graph convolution as encoder and a decoder which computes the dot product between the embedding vector $\Psi (v)$ and its transpose $\Psi^T (v)$~\cite{Kipf2016tc}.
-The attack models are trained on $G_{aux}$ and tested on the target embeddings corresponding to target graph $G_{target}$ to reconstruct the graph data.
-Given the target released embeddings, the adversary then uses the trained decoder attack model to map the released embeddings to the target adjacency matrix $A_{target}^{rec} = f_{dec}(\Psi (v'))$ $\forall$ $v'\in G_{target}$.\\
 
 
 \noindent\textbf{Link inference:}

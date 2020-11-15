@@ -1,7 +1,7 @@
 \section{Introduction}\label{introduction}
 
 
-Large scale real-world systems are typically modelled in the form of graphs: online social networks, world wide web, citation networks and biomedical datasets, which represent the entities as nodes and their relationship with edges~\cite{zhou2018graph}.
+Large scale real-world systems are typically modelled in the form of graphs: mobility, network infrastructures, online social networks, world wide web, citation networks and biomedical datasets, which represent the entities as nodes and their relationship with edges~\cite{zhou2018graph}.
 Traditional Deep Neural Networks fail to capture the nuances of structured data but a specific class of algorithms, namely, Graph Neural Networks (GNNs) have shown state of the art performance on such complex graph data for node classification, link prediction etc.
 An important pre-processing step for using graph data with machine learning is embedding the high dimensional graph data to a low dimensional representation for easy processing by machine learning algorithms.
 In many applications, such embeddings are released for further processing to save storage cost without considering the privacy implications.
@@ -36,10 +36,13 @@ We show that an adversary in this setting can predict the training data with a h
 
 Second, we propose a novel graph reconstruction attack where the adversary, given access to the node embeddings of a subgraph, trains an encoder-decoder model to reconstruct the target graph from its publicly released embeddings.
 This attack has serious privacy implications since the adversary reconstructs the input graph dataset which can be potentially sensitive.
-The proposed attack has high precision: 0.722 for Cora, 0.778 for Citeseer and 0.95 for Pubmed dataset.
+This attack has high precision: 0.722 for Cora, 0.778 for Citeseer and 0.95 for Pubmed dataset.
+%The proposed attack has high precision: 0.722 for Cora, 0.778 for Citeseer and 0.95 for Pubmed dataset.
 Moreover, on increasing the adversary's prior knowledge, the attack performance increases significantly.
-An important privacy implication is link inference, i.e, predicting whether there exists a link between any two nodes in the graph.
-Through this attack, an adversary infers a link between nodes with 93\%, 90\% and 57\% of accuracy for respectively Cora, Citeseer and Pubmed dataset, compared to the 50\% baseline random guess accuracy.
+%An important privacy implication is link inference, i.e, predicting whether there exists a link between any two nodes in the graph.
+An important privacy implication is link inference (i.e, predicting a link between any two nodes in the graph).
+Through this attack, an adversary infers a link between nodes with 80\% of accuracy on average, compared to the 50\% baseline random guess accuracy.
+%Through this attack, an adversary infers a link between nodes with 93\%, 90\% and 57\% of accuracy for respectively Cora, Citeseer and Pubmed dataset, compared to the 50\% baseline random guess accuracy.
 
 
 Finally, we propose the attribute inference attack where the adversary tries to infer sensitive attributes for user node in the graph using the released graph embeddings.
@@ -50,7 +53,7 @@ Here, the attack model's F1 score (capturing the balance between precision and r
 For Facebook, the F1 score was 0.61 for Node2Vec and 0.59 for DeepWalk.
 The paper indicates the serious data privacy risks in graph data processing algorithms and calls for further research to design privacy-preserving embedding algorithms for graph data.
 %
-The code for all the experiments is made publicly available for easy reproducibility\footnote{Anonymized for Submission}.
+The code for all the experiments is made publicly available for easy reproducibility\footnote{\url{https://github.com/vasishtduddu/GraphLeaks}}.
 
 %\noindent\textbf{Paper Organization.}
 The paper is organized as follows.
