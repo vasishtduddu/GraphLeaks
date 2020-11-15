@@ -64,13 +64,15 @@ On the other hand, models trained on Citeseer dataset provide to the adversary a
 The embedding is significantly different for train and test data points for PubMed dataset as seen Figure~\ref{fig:whitebox} which result in a higher whitebox membership inference accuracy compared to Cora and Citeseer dataset.
 The higher accuracy for Pubmed dataset can be attributed to significant distinguishability of features as seen by visually inspecting in Figure~\ref{embedding}.
 
-\begin{wrapfigure}{l}{0.5\linewidth}
+\begin{figure}
+%\begin{wrapfigure}{l}{0.5\linewidth}
   \begin{center}
-    \includegraphics[width=\linewidth]{figures/EmbeddingMIA/whiteboxMIA.pdf}
+    \includegraphics[width=0.5\linewidth]{figures/EmbeddingMIA/whiteboxMIA.pdf}
   \end{center}
   \caption{Adversary advantage for node membership inference from Graph Embeddings.}
   \label{fig:whitebox}
-\end{wrapfigure}
+%\end{wrapfigure}
+\end{figure}
 
 
 
@@ -117,13 +119,15 @@ Finally, for Pubmed dataset showed an increase to 0.95 from 0.94 AUC score and 0
 A direct implication of graph reconstruction attack is inferring whether there exists a link between two nodes in the network by querying the reconstructed adjacency matrix.
 This is a binary classification problem.
 
-\begin{wrapfigure}{l}{0.5\linewidth}
+%\begin{wrapfigure}{l}{0.5\linewidth}
+\begin{figure}
   \begin{center}
-    \includegraphics[width=\linewidth]{figures/LinkInfer/LinkInfer.pdf}
+    \includegraphics[width=0.5\linewidth]{figures/LinkInfer/LinkInfer.pdf}
   \end{center}
 %\vspace{2mm}
   \caption{Link Inference Accuracy Curve over different epochs}
-\end{wrapfigure}
+%\end{wrapfigure}
+\end{figure}
 
 \noindent For Citeseer dataset, the accuracy of of inference is around 93.39\% while for Cora dataset the inference accuracy is 90.73\% and 57.28\% for Pubmed dataset.
 This indicates an adversary advantage of 86.78\% (Citeseer), 81.06\% (Cora) and 14.56\% (Pubmed).

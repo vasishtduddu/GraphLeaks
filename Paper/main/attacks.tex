@@ -116,6 +116,7 @@ Prior work in traditional ML has indicated that the confidence attack is much be
 The signal used to distinguish members from non-members from confidence score attacks is directly from the target model which the shadow model is subtle and uses a substitute model's output as a signal.
 The attack success in this case is reliant on the quality of auxiliary data for training local substitute model and its functional similarity with the target model.
 
+%There have been theoretical results (http://proceedings.mlr.press/v97/sablayrolles19a/sablayrolles19a.pdf) which have shown that whitebox attacks do not perform any better than blackbox attacks. These have been empirically verified as well (https://arxiv.org/abs/1906.06589)(https://arxiv.org/abs/2003.10595) where the blackbox membership inference attacks do better than the whitebox attacks. We should view blackbox and whitebox as two possible threat model and attacks settings instead of considering that adversary will have more knowledge in whitebox than blackbox and hence should perform better. Maybe we can change the attack titles from blackbox to "prediction attack" and whitebox to "embedding attack".
 
 \subsubsection{Whitebox: Inference using Graph Embedding}
 
