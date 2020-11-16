@@ -27,9 +27,9 @@ As shown Figure~\ref{mia}, to distinguish between members and non-members of tra
 \subsubsection{Blackbox: Inference using Output Predictions}
 
 %\noindent\textbf{Threat Model.}
-In this setting, we consider the target model as trained GNN for node classification task.
+In this setting, we consider the target model as a trained GNN for node classification tasks.
 The adversary aims to infer whether a user's node in the graph was used in training the target model $f()$.
-In a blackbox setting, adversary has only access to the model outputs $f(x;W)$ for a given input $x$.
+In a blackbox setting, the adversary has only access to the model outputs $f(x;W)$ for a given input $x$.
 The parameters of the trained model $W$ as well as the intermediate computation are inaccessible to the adversary.
 This is a practical setting, typically seen in the case of Machine Learning as a Service, where a trained model is deployed in the cloud and the adversary queries the model through an API and receives corresponding predictions.
 
@@ -67,8 +67,8 @@ This is a practical setting, typically seen in the case of Machine Learning as a
 %\noindent\textbf{Attack Motivation.}
 Blackbox adversary exploits the statistical difference between the confidence in prediction on training and testing data~\cite{membershipinf}. % add a reference
 Figure~\ref{fig:NIAcause} (left) illustrates this difference where the prediction confidence for one class is much higher for training data points.
-Predicting with higher confidence on seen $G_{train}$ nodes compared to unseen test nodes is referred as overfitting.
-This difference in the output prediction confidence directly results from a distinguishable output distribution between train and test data indicated by non-overlapping region between distributions (Figure~\ref{fig:NIAcause}, right).
+Predicting with higher confidence in seen $G_{train}$ nodes compared to unseen test nodes is referred to as overfitting.
+This difference in the output prediction confidence directly results from a distinguishable output distribution between the train and test data indicated by a non-overlapping region between distributions (Figure~\ref{fig:NIAcause}, right).
 
 
 %\noindent\textbf{Attack Methodology.}
@@ -123,7 +123,7 @@ The attack success in this case is reliant on the quality of auxiliary data for 
 %\noindent\textbf{Threat Model.}
 The adversary in a whitebox setting has access to the model output predictions $f(x; W)$ for an input $x$ as well as the model parameters $W$.
 This allows the adversary to compute the intermediate computations after each layer which in our case corresponds to the embedding for each node as an output of graph convolutional layer.
-This is a strong adversary assumption but practical in the case of federated learning where intermediate computations can be observed~\cite{whitebox,collabinf}.
+This is a practical adversary assumption in the case of federated learning where intermediate computations can be observed~\cite{whitebox,collabinf}.
 %This is a strong adversary assumption but practical in the case of federated learning where the intermediate computations and parameters can be observed~\cite{whitebox,collabinf}.
 
 %\noindent\textbf{Attack Motivation.}
