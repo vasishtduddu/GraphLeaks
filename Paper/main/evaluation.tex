@@ -4,18 +4,6 @@ In this section, we evaluate the privacy leakage from attacks.
 %In this section, we evaluate the privacy leakage from different attacks.
 %The code for all the experiments is made publicly available for easy reproducibility\footnote{Anonymized for Submission}.
 
-\subsection{Membership Inference Attack from Output Predictions}
-%\subsection{Membership Inference Attack from Output Predictions {\large(Blackbox setting)}}
-
-
-The overfitting for GraphSage architecture trained on the three datasets is given in Figure~\ref{fig:NIA}(a).
-We evaluate the two blackbox inference attacks exploiting the output predictions from the models: shadow inference which uses auxiliary knowledge on the data distribution and confidence inference which does not use auxiliary knowledge.
-Results depicted Figure~\ref{fig:NIA}(b) show that under confidence inference attacks, the inference accuracy is 78.28\% (corresponding to an adversary's advantage of 27.48\%), 63.75\% (an adversary's advantage of 56.56\%), and 60.89\% (an advantage of 21.78\%) for Cora, Citesser, and Pubmed datasets, respectively.
-%Results show that under confidence inference attacks, the inference accuracy for Cora is 78.28\% with an adversary's advantage of 27.48\%, 63.75\% inference accuracy for Citesser with an adversary's advantage of 56.56\% and 60.89\% inference accuracy for Pubmed datasets with an advantage of 21.78\%.
-In case of shadow model attacks, the inference accuracy for Cora is 62.06\% (representing an adversary advantage of 21.74\%), 60.87\% for Citeseer (an adversary advantage of 24.12\%), 55.51\% for Pubmed dataset (an adversary advantage of 11.02\%).
-Membership leakage is thus higher in confidence attack (i.e., without auxiliary knowledge) compared to shadow model attack (i.e., with auxiliary knowledge). While counterintuitive, this result is consistent with similar attack methodology for traditional machine learning models~\cite{princeton}.
-
-
 \begin{figure}[t]
     \centering
     \begin{minipage}[b]{1\linewidth}
@@ -32,6 +20,26 @@ Membership leakage is thus higher in confidence attack (i.e., without auxiliary 
 %\vspace{-4mm}
 \end{figure}
 
+\subsection{Membership Inference Attack from Output Predictions}
+%\subsection{Membership Inference Attack from Output Predictions {\large(Blackbox setting)}}
+
+
+The overfitting for GraphSage architecture trained on the three datasets is given in Figure~\ref{fig:NIA}(a).
+We evaluate the two blackbox inference attacks exploiting the output predictions from the models: shadow inference which uses auxiliary knowledge on the data distribution and confidence inference which does not use auxiliary knowledge.
+Results depicted Figure~\ref{fig:NIA}(b) show that under confidence inference attacks, the inference accuracy is 78.28\% (corresponding to an adversary's advantage of 27.48\%), 63.75\% (an adversary's advantage of 56.56\%), and 60.89\% (an advantage of 21.78\%) for Cora, Citesser, and Pubmed datasets, respectively.
+%Results show that under confidence inference attacks, the inference accuracy for Cora is 78.28\% with an adversary's advantage of 27.48\%, 63.75\% inference accuracy for Citesser with an adversary's advantage of 56.56\% and 60.89\% inference accuracy for Pubmed datasets with an advantage of 21.78\%.
+In case of shadow model attacks, the inference accuracy for Cora is 62.06\% (representing an adversary advantage of 21.74\%), 60.87\% for Citeseer (an adversary advantage of 24.12\%), 55.51\% for Pubmed dataset (an adversary advantage of 11.02\%).
+Membership leakage is thus higher in confidence attack (i.e., without auxiliary knowledge) compared to shadow model attack (i.e., with auxiliary knowledge). While counterintuitive, this result is consistent with similar attack methodology for traditional machine learning models~\cite{princeton}.
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.4\textwidth,height=3.8cm]{./figures/BBMIA/gsage_numlayers.pdf}
+%\vspace{-2mm}
+\caption{The inference accuracy and predictive power decreases on increasing the number of layers due to feature oversmoothening from nodes deeper in the graph.}
+\label{fig:numlayers}
+%\vspace{-2mm}
+\end{figure}
 
 
 \textbf{Impact of Increasing Number of Layers.} We evaluate the performance of confidence attack on increasing the range of neighbourhood nodes used for aggregating the features (Figure~\ref{fig:numlayers}).
@@ -44,14 +52,7 @@ This implies that the membership privacy leakage is influenced by the structured
 Specifically, aggregating features from larger number of nodes results in higher averaging which reduces the distinguishability (over-smoothening of features) as model converges to random walk’s limit distribution~\cite{klicpera2018combining,Li2018DeeperII} which is crucial for inference attacks~\cite{membershipinf,ndss19salem}.
 
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.4\textwidth,height=3.8cm]{./figures/BBMIA/gsage_numlayers.pdf}
-%\vspace{-2mm}
-\caption{The inference accuracy and predictive power decreases on increasing the number of layers due to feature oversmoothening from nodes deeper in the graph.}
-\label{fig:numlayers}
-%\vspace{-2mm}
-\end{figure}
+
 
 
 
@@ -66,7 +67,7 @@ On the other hand, models trained on Citeseer dataset provide to the adversary a
 The embedding is significantly different for train and test data points for PubMed dataset as seen Figure~\ref{fig:whitebox} which result in a higher whitebox membership inference accuracy compared to Cora and Citeseer dataset.
 The higher accuracy for Pubmed dataset can be attributed to significant distinguishability of features as seen by visually inspecting in Figure~\ref{embedding}.
 
-\begin{figure}
+\begin{figure}[t]
 %\begin{wrapfigure}{l}{0.5\linewidth}
   \begin{center}
     \includegraphics[width=0.5\linewidth]{figures/EmbeddingMIA/whiteboxMIA.pdf}
@@ -117,7 +118,7 @@ Finally, for Pubmed dataset showed an increase to 0.95 from 0.94 AUC score and 0
 
 
 %\begin{wrapfigure}{l}{0.5\linewidth}
-\begin{figure}[!htb]
+\begin{figure}[t]
   \begin{center}
     \includegraphics[width=0.5\linewidth]{figures/LinkInfer/LinkInfer.pdf}
   \end{center}
@@ -147,7 +148,7 @@ We generate embeddings using the two algorithms on Facebook and LastFM dataset w
 That is, the adversary infers user gender as a target sensitive attribute in Facebook dataset classified into one of three classes: Male, Female and Others.
 The location target attribute for LastFM dataset is categorized in 18 locations for the users in the network.
 
-\begin{figure}[!htb]
+\begin{figure}[t]
     \centering
     \begin{minipage}[b]{1\linewidth}
     \centering
