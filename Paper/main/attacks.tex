@@ -20,7 +20,7 @@ As shown Figure~\ref{mia}, to distinguish between members and non-members of tra
 %\caption{Blackbox and Whitebox Inference attacks to distinguish between members and non-members of $G_{train}$.}
 \caption{Blackbox and whitebox inference attacks to distinguish members and non-members of $G_{train}$.}
 \label{mia}
-\vspace{-2mm}
+%\vspace{-2mm}
 \end{figure}
 
 
@@ -44,24 +44,24 @@ This is a practical setting, typically seen in the case of Machine Learning as a
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/citeseer.pdf}}
     }
 
-\vspace{-2mm}
+%\vspace{-2mm}
     \subfigure[Cora]{
    	\label{fig:mem_soft_label}
     \includegraphics[width=0.48\linewidth]{figures/BBMIA/cora_hist.pdf}
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/cora.pdf}}
     }
 
-\vspace{-2mm}
+%\vspace{-2mm}
     \subfigure[Pubmed]{
     \label{fig:mem_soft_label}
     \includegraphics[width=0.48\linewidth]{figures/BBMIA/pubmed_hist.pdf}
     \raisebox{2mm}{\includegraphics[width=0.5\linewidth]{figures/BBMIA/pubmed.pdf}}
     }
     \end{minipage}
-\vspace{-4mm}
+%\vspace{-4mm}
     \caption{Model predictions are more confident for nodes in $G_{train}$ compared to test graph (left). The extent of overfitting can be detected by a non-overlapping region between the output prediction distributions across all data points (right).}
     \label{fig:NIAcause}
-\vspace{-3mm}
+%\vspace{-3mm}
 \end{figure}
 
 %\noindent\textbf{Attack Motivation.}
@@ -81,10 +81,10 @@ We consider two attacks within the blackbox setting: (a) shadow model attack and
     \includegraphics[width=.23\textwidth]{figures/EmbeddingMIA/cora.pdf}\hfill
 
     \includegraphics[width=.23\textwidth]{figures/EmbeddingMIA/pubmed.pdf}
-\vspace{-2mm}
+%\vspace{-2mm}
 \caption{Whitebox membership inference attacks exploit the distinguishable intermediate embedding of train and test graph nodes for Citeseer (left), Cora (middle) and Pubmed dataset (right).}
 \label{embedding}
-\vspace{-3mm}
+%\vspace{-3mm}
 \end{figure}
 
 \noindent\textbf{Shadow Attack:} The shadow attack relies on the adversary training a local substitute model with similar functionality as the target model to identify characteristics of members and non-members.
@@ -134,10 +134,12 @@ Figure~\ref{embedding} illustrates this rationale by plotting embedding of train
 
 
 %\noindent\textbf{Attack Methodology.}
-The attack is unsupervised as the adversary has no prior knowledge to map the intermediate embeddings to a membership value. % (available as auxiliary knowledge in shadow model).
+The attack methodology is unsupervised and the adversary has no supervised labels to map the intermediate embeddings to a membership value.
+%The attack is unsupervised as the adversary has no prior knowledge to map the intermediate embeddings to a membership value. % (available as auxiliary knowledge in shadow model).
 The adversary trains an encoder-decoder network in unsupervised fashion to map the intermediate embedding to a single membership value.
 For an input graph node's embedding $\Psi (v)$, encoder $f_{enc}()$ generates a scalar membership value which is passed to decoder $f_{dec}(f_{enc}(\Psi (v)))$ to obtain $\Psi(v)$ by minimizing reconstruction loss: $||\Psi (v) - f_{dec}(f_{enc}(\Psi (v)))||_2^2$.
 Given the membership values for different training and testing data points, K-Means clustering is used to cluster nodes into two classes (members and non-members).
+In order to distinguish the clusters, the adversary requires to know the prior mapping of a small number of members and non-members.
 For any new user node, the adversary then clusters as members or non-members of the training data.
 %This novel whitebox attack exploits the difference in embedding representation between members and non-members of training graph data which is not possible for Deep Neural Networks trained on euclidean data where the intermediate activations are abstract (generalize well) and cannot be used to distinguish members and non-members~\cite{whitebox}.
 
@@ -191,10 +193,10 @@ Given the target released embeddings, the adversary then uses the trained decode
     \includegraphics[width=0.6\linewidth]{./figures/Attacks/reconstruction2.pdf}
     }
     \end{minipage}
-\vspace{-2mm}
+%\vspace{-2mm}
     \caption{Attack methodology for graph reconstruction from released embeddings.}
     \label{fig:recattack}
-\vspace{-1mm}
+%\vspace{-1mm}
 \end{figure}
 
 

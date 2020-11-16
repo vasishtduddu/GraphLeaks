@@ -4,7 +4,8 @@ In this section, we evaluate the privacy leakage from attacks.
 %In this section, we evaluate the privacy leakage from different attacks.
 %The code for all the experiments is made publicly available for easy reproducibility\footnote{Anonymized for Submission}.
 
-\subsection{Membership Inference Attack from Output Predictions {\large(Blackbox setting)}}
+\subsection{Membership Inference Attack from Output Predictions}
+%\subsection{Membership Inference Attack from Output Predictions {\large(Blackbox setting)}}
 
 
 The overfitting for GraphSage architecture trained on the three datasets is given in Figure~\ref{fig:NIA}(a).
@@ -25,10 +26,10 @@ Membership leakage is thus higher in confidence attack (i.e., without auxiliary 
     \includegraphics[width=0.5\linewidth,height=3.5cm, keepaspectratio]{figures/BBMIA/NodeIA.pdf}
     }
     \end{minipage}
-\vspace{-2mm}
+%\vspace{-2mm}
     \caption{Blackbox membership inference attack uses the output predictions to give adversary an inference advantage.}
     \label{fig:NIA}
-\vspace{-4mm}
+%\vspace{-4mm}
 \end{figure}
 
 
@@ -56,7 +57,8 @@ Specifically, aggregating features from larger number of nodes results in higher
 
 
 
-\subsection{Membership Inference Attack from Graph Embeddings {\large(Whitebox setting)}}
+%\subsection{Membership Inference Attack from Graph Embeddings {\large(Whitebox setting)}}
+\subsection{Membership Inference Attack from Graph Embeddings}
 
 We exploit the difference in intermediate feature representation of train and test data to perform membership inference attack in a whitebox setting.
 Results show that different models trained on PubMed dataset leak significantly more information between 20\% and 36\% over random guess accuracy.
@@ -80,17 +82,6 @@ The higher accuracy for Pubmed dataset can be attributed to significant distingu
 Indeed, the parameters are specifically updated to fit the training dataset resulting in a high distinguishability between feature embedding of train and test data records.
 Moreover, the feature embedding for the initial layers are useful since for later layers the features are oversmoothened which also reduces accuracy (as seen in increasing the range of nodes of message passing algorithm).
 
-
-
-
-\subsection{Graph Reconstruction Attack}
-
-The success of graph reconstruction is evaluated on the unseen target graph while the model is trained on the train graph.
-The test AUC score for Cora dataset is 0.65 and the average precision is 0.722 while for Citeseer dataset the AUC score is 0.65 and 0.778 average precision.
-%In case of 
-For Pubmed dataset, we get an average precision of 0.95 on the test set with an ROC of 0.94 in reconstructing the target test graph.
-The curve for variation of AUC score and the average precision for the three datasets on the validation sub graph is given in Figure~\ref{fig:valgraphrecon}.
-
 \begin{figure}[!htb]
     \centering
     \begin{minipage}[b]{1\linewidth}
@@ -101,11 +92,22 @@ The curve for variation of AUC score and the average precision for the three dat
     \includegraphics[width=0.5\linewidth]{figures/Reconstruction/ap.pdf}
     }
     \end{minipage}
-\vspace{-3mm}
+%\vspace{-3mm}
     \caption{Training curves for AUC score and Average Precision on the validation graph.}
     \label{fig:valgraphrecon}
-\vspace{-1mm}
+%\vspace{-1mm}
 \end{figure}
+
+
+\subsection{Graph Reconstruction Attack}
+
+The success of graph reconstruction is evaluated on the unseen target graph while the model is trained on the train graph.
+The test AUC score for Cora dataset is 0.65 and the average precision is 0.722 while for Citeseer dataset the AUC score is 0.65 and 0.778 average precision.
+%In case of 
+For Pubmed dataset, we get an average precision of 0.95 on the test set with an ROC of 0.94 in reconstructing the target test graph.
+The curve for variation of AUC score and the average precision for the three datasets on the validation sub graph is given in Figure~\ref{fig:valgraphrecon}.
+
+
 
 \noindent\textbf{Impact of Adversary Knowledge.} On increasing the adversary's knowledge to 50\% of the target graph, we observe an increase the attack performance.
 Specifically, the AUC score for Cora increases to 0.76 from 0.65 while the average precision increases to 0.81 from 0.722.
@@ -114,22 +116,25 @@ Finally, for Pubmed dataset showed an increase to 0.95 from 0.94 AUC score and 0
 
 
 
-\subsection{Link Inference Attack}
-
-A direct implication of graph reconstruction attack is inferring whether there exists a link between two nodes in the network by querying the reconstructed adjacency matrix.
-This is a binary classification problem.
-
 %\begin{wrapfigure}{l}{0.5\linewidth}
-\begin{figure}
+\begin{figure}[!htb]
   \begin{center}
     \includegraphics[width=0.5\linewidth]{figures/LinkInfer/LinkInfer.pdf}
   \end{center}
 %\vspace{2mm}
   \caption{Link Inference Accuracy Curve over different epochs}
+\label{fig:lia}
 %\end{wrapfigure}
 \end{figure}
 
-\noindent For Citeseer dataset, the accuracy of of inference is around 93.39\% while for Cora dataset the inference accuracy is 90.73\% and 57.28\% for Pubmed dataset.
+
+\subsection{Link Inference Attack}
+
+A direct implication of graph reconstruction attack is inferring whether there exists a link between two nodes in the network by querying the reconstructed adjacency matrix.
+This is a binary classification problem.
+
+Figure~\ref{fig:lia} depicts the outcome of this attack for the three datasets.
+For Citeseer dataset, the accuracy of of inference is around 93.39\% while for Cora dataset the inference accuracy is 90.73\% and 57.28\% for Pubmed dataset.
 This indicates an adversary advantage of 86.78\% (Citeseer), 81.06\% (Cora) and 14.56\% (Pubmed).
 The same train-test-validation distribution is used for the three datasets with 30\% train records and 60\% test records and remaining 10\% as validation records.
 
@@ -153,7 +158,7 @@ The location target attribute for LastFM dataset is categorized in 18 locations 
     }
 
     \end{minipage}
-\vspace{-3mm}
+%\vspace{-3mm}
     \caption{F1 score for different attack classifiers to infer sensitive attributes.}
     \label{fig:aia}
 \end{figure}
