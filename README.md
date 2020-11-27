@@ -10,11 +10,11 @@ The code is as follows:
 
 3) Reconstruction: Graph Reconstruction using graph encoder decoder.
 
-4) /data: Includes the facebook and LastFM dataset for attribute inference attacks. The data for graph reconstruction requires to load the train and test graphs seperately unlike what most libraries provider. The data can be obtained from https://github.com/DaehanKim/vgae_pytorch.
+Data: The facebook and LastFM dataset for attribute inference attacks is available from Stanford Large Network Datasete Collection. The data for graph reconstruction requires to load the train and test graphs seperately unlike what most libraries provider. The data can be obtained from https://github.com/DaehanKim/vgae_pytorch.
 
 
 Credits:
 
-- Node2Vec and DeepWalk embeddings algorithms from their original reposiroties
+- Node2Vec and DeepWalk embeddings algorithms from their original repositories (https://github.com/phanein/deepwalk) (https://github.com/aditya-grover/node2vec)
 
 - Graph Encoder Decoder: https://github.com/DaehanKim/vgae_pytorch
