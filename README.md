@@ -18,3 +18,5 @@ Credits:
 - Node2Vec and DeepWalk embeddings algorithms from their original repositories (https://github.com/phanein/deepwalk) (https://github.com/aditya-grover/node2vec)
 
 - Graph Encoder Decoder: https://github.com/DaehanKim/vgae_pytorch
+
+- BlackBox MIA: https://github.com/inspire-group/privacy-vs-robustness
