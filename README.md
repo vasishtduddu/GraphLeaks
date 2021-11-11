@@ -21,26 +21,3 @@ Data: The facebook and LastFM dataset for attribute inference attacks is availab
 
 - BlackBox MIA: https://github.com/inspire-group/privacy-vs-robustness
 
-
-### Citation
-
-``bash
-@inproceedings{duddu2020graphleaks,
-author = {Duddu, Vasisht and Boutet, Antoine and Shejwalkar, Virat},
-title = {Quantifying Privacy Leakage in Graph Embedding},
-year = {2020},
-isbn = {9781450388405},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3448891.3448939},
-doi = {10.1145/3448891.3448939},
-booktitle = {MobiQuitous 2020 - 17th EAI International Conference on Mobile and Ubiquitous Systems: Computing, Networking and Services},
-pages = {76–85},
-numpages = {10},
-keywords = {Graph Embeddings., Inference Attacks, Privacy Leakage, Graph Neural Networks},
-location = {Darmstadt, Germany},
-series = {MobiQuitous '20}
-}
-``
-  
-
