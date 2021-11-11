@@ -24,6 +24,7 @@ Data: The facebook and LastFM dataset for attribute inference attacks is availab
 
 ### Citation
 
+``bash
 @inproceedings{duddu2020graphleaks,
 author = {Duddu, Vasisht and Boutet, Antoine and Shejwalkar, Virat},
 title = {Quantifying Privacy Leakage in Graph Embedding},
@@ -40,6 +41,6 @@ keywords = {Graph Embeddings., Inference Attacks, Privacy Leakage, Graph Neural 
 location = {Darmstadt, Germany},
 series = {MobiQuitous '20}
 }
-
+``
   
 
